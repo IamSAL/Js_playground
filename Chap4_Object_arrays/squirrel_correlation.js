@@ -116,7 +116,7 @@ JOURNAL.forEach(entry=> {
 });
 
 function createTable(event,journal=JOURNAL){
-    let table=[0,0,0,0]
+    let table=[0,0,0,0];
     JOURNAL.forEach(entry=> {
         
             if(!entry.events.includes(event)&&!entry.squirrel){
@@ -134,21 +134,24 @@ function createTable(event,journal=JOURNAL){
     return table;
 }
 let maxEvent='';
-let max=-2;
+let max=-Infinity;
+let min=Infinity;
+let minEvent='';
 all_events.forEach(event=>{
-    let table=createTable(event)
-    let phi=findPhi(table)
-    console.log(`${event} : ${table} :${phi}`)
+    let table=createTable(event);
+    let phi=findPhi(table);
+    console.log(`${event} : ${table} :${phi}`);
     if(phi>max){
         maxEvent=event;
         max=phi;
     }
-})
-console.log('--------------------------------------------')
-console.log(`Maximum correlation, ${maxEvent}:${max}`);
-
-
-
+    if(phi<min){
+        min=phi;
+        minEvent=event;
+    }
+});
+console.log('--------------------------------------------');
+console.log(`Maximum correlation, ${maxEvent}:${max} | ${minEvent}:${min}`);
 
 
 

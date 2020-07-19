@@ -1,3 +1,4 @@
 *.ini
 *.zip
+node_modules
 desktop.ini

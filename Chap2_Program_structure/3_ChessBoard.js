@@ -1,7 +1,7 @@
 let gridSize=prompt('Enter Grid Size:');
 let lines=[''];
 let chessboard=document.createElement('table');
-chessboard.classList.add('chessTable')
+chessboard.classList.add('chessTable');
 for(let i=0;i<gridSize;i++){
     let tr=document.createElement('tr');
     for(j=0;j<gridSize;j++){

@@ -6,4 +6,4 @@ let countChar=(str,char)=>{
         }
     }
     return count;
-}
+};
