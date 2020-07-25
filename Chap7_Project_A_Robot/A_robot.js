@@ -134,6 +134,8 @@ function goalOrientedRobot({place, parcels}, route) {
 }
 
 
+console.log(mailRoute)
+
 //export for next solution
 module.exports=runRobot;
     global.runRobot = runRobot;
