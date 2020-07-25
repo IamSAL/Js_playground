@@ -1,5 +1,5 @@
 const Group=require('./2_Groups');
-console.log(Group);
+// console.log(Group);
 
 Group.prototype[Symbol.iterator]=function () {
     return new customIterator(this);
@@ -22,13 +22,14 @@ class customIterator{
     }
 }
 
-let gNew=Group.from([1,2,2,3,4,7,3,5,6,8,6,9,10,11,20,11]);
-console.log(gNew);
-for(let val of gNew){
-    console.log(val);
-}
+// let gNew=Group.from([1,2,2,3,4,7,3,5,6,8,6,9,10,11,20,11]);
+// console.log(gNew);
+// for(let val of gNew){
+//     console.log(val);
+// }
 
-
+module.exports=customIterator;
+    global.customIterator=customIterator;
 
 
 
