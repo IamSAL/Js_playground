@@ -53,7 +53,7 @@ console.log(/\d+/.exec("one two 100"));
 console.log("one three 250000 hello 100 ".match(/(hello)/))
 console.log(/bad(ly)?/.exec("bad"));
 console.log(/'(\w+)'/.exec("she said 'hello'"))
-console.log(/(\d)+/.exec("123"))
+console.log(/(\d)+/.exec("123fsdf435"))
 
 let dt=new Date();
 console.log(dt)
@@ -71,3 +71,48 @@ function getDate(string) {
 console.log(getDate("11-7-1997"))
 
 
+console.log("salman")
+console.log("this i5 a 5741ng w17h nu3be4s".replace(/\d+/g,"NUMBER"))
+console.log(/\d+/.exec("this i5 a 5741ng w17h nu3be4s"))
+let match=/\d+/.exec("this i5 a 5741ng w17h nu3be4s");
+let testr="this i 5 a 574 1 ng w 17 h nu 3 be4s";
+let number=/\d+/g;
+let match2;
+console.log(match2);
+while (match2=number.exec(testr)){
+    console.log(match2.index,":",match2[0]);
+}
+console.log(match2);
+
+
+
+let name = "har*ry";
+let escaped=name.replace(/[.+*?(){|^$]/g,"\\$&")
+console.log(escaped)
+let text = "Har*ry is a suspicious character.";
+let reg=new RegExp(`\\b(${escaped})\\b`,"gi");
+console.log(text.replace(reg, "^$1^"));
+
+/*
+
+shortcuts:
+
+/abc/       A sequence of characters
+/[abc]/     Any character from a set of characters
+/[^abc]     Any character that is not in the set
+/[0-9]/     Any character in a range of characters
+/x+/        One or more occurrences of x
+/x* /       Zero or more occurrences of z
+/X?/        Zero or one occurrences, optional occurrence
+/x{2,4}/    2 to 4 occurrences of x
+/(abc)/     A group
+/a|b|c/     Any of the given pattern
+/\d/        Any digit character
+/\w/        An aplhanumeric character (word character)
+/\s/        Any whitespace character
+/./         Any character except newlines
+/\b/        A word boundary(must not be any word or number around the pattern)
+/^/         Start of the input
+/$/         End of input
+
+ */
