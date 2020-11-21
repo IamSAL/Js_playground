@@ -17,7 +17,6 @@ class Group {
     has(value){
         return this.members.indexOf(value) !== -1;
     }
-
     static from(iterable){
         let grp=new Group();
         for(let iteration of iterable){
@@ -25,7 +24,6 @@ class Group {
         }
         return grp;
     }
-
 }
 
 let g1=new Group();
