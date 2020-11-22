@@ -110,8 +110,10 @@ shortcuts:
 /\d/        Any digit character
 /\w/        An aplhanumeric character (word character)
 /\s/        Any whitespace character
+/\S/        Any Non-whitespace character
 /./         Any character except newlines
 /\b/        A word boundary(must not be any word or number around the pattern)
+/\n/        A newline
 /^/         Start of the input
 /$/         End of input
 

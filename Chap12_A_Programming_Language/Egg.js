@@ -1,3 +1,5 @@
+
+
 function parseExpression(program){
     program=skipSpace(program);
     let match,expr;
@@ -32,15 +34,18 @@ function parseApply(expr,program){
    }
    return parseApply(expr,program.slice(1));
 }
-
+let {skipComments}=require('./3_Comments');
 function skipSpace(str){
+    //skip comments
+    str=skipComments(str);
+
+    //skip spaces
     let first=str.search(/\S/);
     if(first==-1){
         return "";
     }
     return str.slice(first);
 }
-
 
 function parse(program){
     let {expr,rest}=parseExpression(program);
@@ -156,33 +161,37 @@ function run(program){
     return evaluate(parse(program),Object.create(topScope));
 }
 
-run(`
-do(define(total, 0),
-define(count, 1),
-while(<(count, 11),
-do(define(total, +(total, count)),
-define(count, +(count, 1)))),
-print(total))
-
-`)
-
-
-
-run(`
-do(define(plusOne, fun(a, +(a, 1))),
-print(plusOne(10)))
-`);
-
-run(`
-do(define(pow, fun(base, exp,
-if(==(exp, 0),
-1,
-*(base, pow(base, -(exp, 1)))))),
-print(pow(2, 10)))
-`);
+// run(`
+// do(define(total, 0),
+// define(count, 1),
+// while(<(count, 11),
+// do(define(total, +(total, count)),
+// define(count, +(count, 1)))),
+// print(total))
+//
+// `)
 
 
+//
+// run(`
+// do(define(plusOne, fun(a, +(a, 1))),
+// print(plusOne(10)))
+// `);
+//
+// run(`
+// do(define(pow, fun(base, exp,
+// if(==(exp, 0),
+// 1,
+// *(base, pow(base, -(exp, 1)))))),
+// print(pow(2, 10)))
+// `);
 
+//closure:
+// run(`
+// do(define(f, fun(a, fun(b, +(a, b)))),
+// print(f(4)(5)))
+// `);
+module.exports={topScope,run,parse,skipSpace,specialForms,evaluate};
 
 
 
