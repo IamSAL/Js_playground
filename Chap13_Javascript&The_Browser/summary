@@ -1,0 +1,9 @@
+This short chapter talks about
+-how browser is very important to bring light onto the growth of javascript.
+-What is internet and how computers communicates, how certain kinds of communication happens based on the protocols,
+ why protocols specially TCP is important, what are ports, servers and clients etc.
+-What is www and how its different from the general idea of internet.
+-HTMl: basic description about pars of a html document, specially focusing in the script tag.
+-sandbox: says why some features of js are restricted in browsers such as reading disk files for users privacy safety and security.
+-Browser wars: describes how browser vendors dominated the standardization of web technologies and how hard life was for
+ web devs back in the days , and that its easy nowadays as most browser vendors joined to have a uniform standard for web.
