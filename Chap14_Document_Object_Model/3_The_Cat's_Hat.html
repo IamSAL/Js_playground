@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            padding-top: 100px;
+        }
+        .catContainer{
+            text-align: center;
+        }
+        .cat{
+            position: relative;
+            width:30%;
+        }
+        .hat{
+            position: relative;
+            width: 7%;
+        }
+        .hat:hover{
+            width: 50%;
+            transition: 2s;
+        }
+    </style>
+</head>
+<body>
+<p class="catContainer">
+    <img src="https://pngimg.com/uploads/cowboy_hat/cowboy_hat_PNG36.png" class="hat" alt="">
+    <img src="https://lh3.googleusercontent.com/proxy/MOdhW6zzhbV9qISuJ_sDdnV_d3Nhmjf8Rpv4GqxLbyxYER-k9VZdIkszv5BziYKFUu61qSBytDElGovMU6B5eJsDh-_kFchFvdglTFQ8f-XrvZJvgj0" class="cat" alt="">
+</p>
+
+
+<script>
+    let cat=document.querySelector('.cat');
+    let hat=document.querySelector('.hat');
+    let angle=Math.PI/2;
+    function animate(time,lastTime){
+        if(lastTime != null){
+            angle+=(time-lastTime)*0.001;
+        }
+        cat.style.top=(Math.sin(angle)*100)+20+"px";
+        cat.style.left=(Math.cos(angle)*300)-20+"px";
+
+        hat.style.top=(Math.cos(angle)*250)+20+"px";
+        //hat.style.left=(Math.sin(angle)*500)-20+"px";
+        requestAnimationFrame(newTime=>animate(newTime,time));
+    }
+    requestAnimationFrame(animate);
+</script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="table-responsive">
+    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+        <thead>
+        <tr role="row">
+            <th>Country</th>
+            <th>Cases</th>
+            <th>Today Cases</th>
+            <th>Death</th>
+            <th>Today Deaths</th>
+            <th>Recovered</th>
+            <th>active</th>
+            <th>tests</th>
+        </tr>
+        </thead>
+        <tfoot>
+        <tr>
+        <tr>
+            <th>Country</th>
+            <th>Cases</th>
+            <th>Today Cases</th>
+            <th>Death</th>
+            <th>Today Deaths</th>
+            <th>Recovered</th>
+            <th>active</th>
+            <th>tests</th>
+        </tr>
+        </tr>
+        </tfoot>
+        <tbody id="countryData">
+
+
+
+        </tbody>
+    </table>
+</div>
+
+<script>
+    function getElementsByTag(node,tagStr){
+        let matchedArr=[];
+        function deepen(node){
+            if(node.nodeName.toLowerCase()==tagStr){
+                matchedArr.push(node);
+            }
+            if(node.children==null){
+                return 0;
+            }else{
+                Array.from(node.children).forEach(node=>deepen(node));
+            }
+        }
+        deepen(node);
+        return matchedArr;
+    }
+</script>
+</body>
+</html>
