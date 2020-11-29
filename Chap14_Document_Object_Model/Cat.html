@@ -1,10 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .catContainer{
+            text-align: center;
+        }
+        .cat{
+            position: relative;
+            width:30%;
+        }
+    </style>
 </head>
 <body>
-$END$
+   <p class="catContainer">
+       <img src="https://lh3.googleusercontent.com/proxy/MOdhW6zzhbV9qISuJ_sDdnV_d3Nhmjf8Rpv4GqxLbyxYER-k9VZdIkszv5BziYKFUu61qSBytDElGovMU6B5eJsDh-_kFchFvdglTFQ8f-XrvZJvgj0" class="cat" alt="">
+   </p>
+
+
+   <script>
+       let cat=document.querySelector('.cat');
+       let angle=Math.PI/2;
+       function animate(time,lastTime){
+           if(lastTime != null){
+               angle+=(time-lastTime)*0.001;
+           }
+           cat.style.top=(Math.sin(angle)*100)+"px";
+           cat.style.left=(Math.cos(angle)*500)+"px";
+           requestAnimationFrame(newTime=>animate(newTime,time));
+       }
+       requestAnimationFrame(animate);
+   </script>
 </body>
 </html>

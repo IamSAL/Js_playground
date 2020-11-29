@@ -1,10 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        td, th {
+            border: 1px solid grey;
+            padding: 10px;
+        }
+
+        table {
+            width: 80%;
+            margin-left: 10%;
+            margin-top: 50px;
+        }
+    </style>
 </head>
 <body>
-$END$
+<div id="mountains">
+
+</div>
+
+
+<script>
+    let mountains=[{col1:"Name",col2:"Height",col3:"Place"},{name:"Kilimanjaro",height:5895,place:"Tanzania"},{name:"Konglak",height:2000,place:"Sajek"},{name:"Chondronath",height:1470,place:"Sitakundu"},{name: "Everest", height: 8848, place: "Nepal"},
+        {name: "Mount Fuji", height: 3776, place: "Japan"},
+        {name: "Vaalserberg", height: 323, place: "Netherlands"},
+        {name: "Denali", height: 6168, place: "United States"},
+        {name: "Popocatepetl", height: 5465, place: "Mexico"},
+        {name: "Mont Blanc", height: 4808, place: "Italy/France"}]
+
+    let table=document.createElement('table');
+    let tr=document.createElement('tr');
+    let tbody=document.createElement('tbody');
+
+    for(head of Object.keys(mountains[0])){
+        let th=document.createElement('th');
+        th.appendChild(document.createTextNode(mountains[0][head]))
+        tr.appendChild(th);
+    }
+    table.appendChild(tr);
+    for(let i=1;i<mountains.length;i++){
+        let tr=document.createElement('tr');
+        for(let data of Object.keys(mountains[i])){
+            let td=document.createElement('td');
+            td.appendChild(document.createTextNode(mountains[i][data]))
+            if(typeof  mountains[i][data]=="number"){
+                td.style.textAlign="right";
+            }
+            tr.appendChild(td);
+        }
+        tbody.appendChild(tr);
+    }
+    table.appendChild(tbody);
+    document.getElementById('mountains').appendChild(table);
+
+
+</script>
 </body>
 </html>
