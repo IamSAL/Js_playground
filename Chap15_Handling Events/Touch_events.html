@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Touch Test</title>
+    <style>
+        dot { position: absolute; display: block;
+            border: 2px solid red; border-radius: 50px;
+            height: 100px; width: 100px; }
+    </style>
+</head>
+<body>
+<div class="touches">
+
+</div>
+
+
+<script>
+    window.addEventListener('touchstart',(e)=>{
+
+        for(let touch of e.changedTouches){
+            let dot=document.createElement('dot');
+            dot.style.top=touch.clientY-50+'px';
+            dot.style.left=touch.clientX-50+'px';
+            document.body.appendChild(dot);
+            console.log(touch.clientX,touch.clientX);
+        }
+
+
+    })
+
+</script>
+</body>
+
+</html>
