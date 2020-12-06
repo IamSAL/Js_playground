@@ -2,7 +2,7 @@
 
 generateTrails(Math.random()*300+5);
 
-function createTrail(X=Math.random()*innerWidth+1,Y=Math.random()*innerHeight+1,Size=Math.random()*40+1,Color=getRandomColor()){
+function createTrail(X=Math.random()*innerWidth+1,Y=Math.random()*innerHeight+1,Size=Math.random()*20+1,Color=getRandomColor()){
     let trail=document.createElement('div');
     trail.style.position='absolute';
     trail.className=`animate__animated animate__`+animateClasses[Math.round(Math.random()*animateClasses.length)];
@@ -29,9 +29,9 @@ window.addEventListener('keydown',next)
 window.addEventListener('touchstart',next)
 window.addEventListener('touchend',next)
 function next(e){
-        if(e.key==="ArrowUp" || e.key==="ArrowDown"){
+        if(e.key==="ArrowUp" || e.key==="ArrowDown" ||e.touches){
             document.body.innerHTML='';
-            generateTrails(Math.random()*300+15);
+            generateTrails(Math.random()*100+15);
         }
 }
 function generateTrails(numbers){
