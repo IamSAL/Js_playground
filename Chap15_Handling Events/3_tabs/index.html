@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    .tabs button {
+        font-size: 15px;
+        border-radius: 5px;
+        text-align: center;
+        margin: 5px;
+        padding: 5px 25px;
+        border: 1px solid gray;
+        background-color: #d6d6d6;
+    }
+    .parent{
+        padding: 30px;
+        background-color: #e8e8e8;
+        width: 70%;
+        margin-left: 15%;
+        margin-top: 50px;
+        font-family: fangsong;
+        font-size: 20px;
+        line-height: 1.5;
+        border-radius: 10px;
+        padding-top: 0px;
+        border: 1px solid darkgray;
+    }
+    .inactive{
+        display: none;
+    }
+    .active{
+        background-color: white !important;
+        border: 2px solid #007aa4 !important;
+    }
+</style>
+<body>
+<button onclick="asTabs(document.querySelector('.parent'))">Show as Tabs</button>
+<div class="parent">
+    <div data-tabname="Home">
+        <h2>Home</h2>
+
+        <div id="mw-head-base" class="noprint"></div>
+        <div id="content" class="mw-body" role="main">
+            <a id="top"></a>
+            <div id="siteNotice" class="mw-body-content"><!-- CentralNotice --></div>
+            <div class="mw-indicators mw-body-content">
+            </div>
+            <h1 id="firstHeading" class="firstHeading" lang="en">Main Page</h1>
+            <div id="bodyContent" class="mw-body-content">
+                <div id="siteSub" class="noprint">From Wikipedia, the free encyclopedia</div>
+                <div id="contentSub"></div>
+                <div id="contentSub2"></div>
+
+                <div id="jump-to-nav"></div>
+                <a class="mw-jump-link" href="#mw-head">Jump to navigation</a>
+                <a class="mw-jump-link" href="#searchInput">Jump to search</a>
+                <div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div class="mw-parser-output"><style data-mw-deduplicate="TemplateStyles:r979842806">.mw-parser-output #mp-topbanner{clear:both;position:relative;box-sizing:border-box;width:100%;margin-top:1.2em;min-width:47em;border-color:#ddd;background-color:#f9f9f9;white-space:nowrap}.mw-parser-output .mp-bordered,.mw-parser-output .mp-h2,body.skin-timeless .mw-parser-output .mp-h2{border-width:1px;border-style:solid}.mw-parser-output #mp-topbanner,.mw-parser-output .mp-h2,.mw-parser-output #mp-left{color:#000}.mw-parser-output #mp-welcomecount{margin:0.4em;width:22em;text-align:center}.mw-parser-output #mp-welcome{font-size:162%;padding:0.1em}.mw-parser-output #mp-free{font-size:95%}.mw-parser-output #articlecount{font-size:85%}.mw-parser-output #mp-portals{position:absolute;right:-1em;top:50%;margin-top:-2.4em;width:38%;min-width:25em;font-size:95%}.mw-parser-output #mp-portals li{position:absolute;left:0;top:0}.mw-parser-output #mp-portals .portal-hmid{left:33%}.mw-parser-output #mp-portals .portal-hright{left:66%}.mw-parser-output #mp-portals .portal-vmid{top:1.6em}.mw-parser-output #mp-portals .portal-vbot{top:3.2em}.mw-parser-output .portal-hright.portal-vbot{font-weight:bold}.mw-parser-output #mp-banner{margin-top:4px;padding:0.5em;background-color:#fffaf5;border-color:#f2e0ce}.mw-parser-output .mp-h2,body.skin-timeless .mw-parser-output .mp-h2{margin:0.5em;padding:0.2em 0.4em;font-size:120%;font-weight:bold;font-family:inherit}.mw-parser-output h2.mp-h2::after{border:none}.mw-parser-output .mp-later{font-size:85%;font-weight:normal}.mw-parser-output #mp-upper{width:100%;margin-top:4px;margin-bottom:0;border-spacing:0;border-collapse:separate}.mw-parser-output #mp-upper .mid-table{border-color:transparent}.mw-parser-output #mp-left{width:55%;border-color:#cef2e0;background:#f5fffa}.mw-parser-output #mp-right{width:45%;border-color:#cedff2;background:#f5faff}.mw-parser-output #mp-left,.mw-parser-output #mp-right{padding:0;vertical-align:top}.mw-parser-output #mp-left .mp-h2{background:#cef2e0;border-color:#a3bfb1}.mw-parser-output #mp-right .mp-h2{background:#cedff2;border-color:#a3b0bf}.mw-parser-output #mp-tfa,.mw-parser-output #mp-dyk,.mw-parser-output #mp-itn,.mw-parser-output #mp-otd,.mw-parser-output #mp-other-lower>div{padding:0.1em 0.6em}.mw-parser-output #mp-dyk-h2,.mw-parser-output #mp-otd-h2{clear:both}.mw-parser-output #mp-middle{margin-top:4px;border-color:#f2cedd;background:#fff5fa}.mw-parser-output #mp-middle,.mw-parser-output #mp-lower,.mw-parser-output #mp-other-lower{overflow:auto}.mw-parser-output #mp-tfl-h2{background:#f2cedd;border-color:#bfa3af}.mw-parser-output #mp-tfl{padding:0.3em 0.7em}.mw-parser-output #mp-lower{margin-top:4px;border-color:#ddcef2;background:#faf5ff}.mw-parser-output #mp-tfp-h2{background:#ddcef2;border-color:#afa3bf}.mw-parser-output #mp-tfp{margin:0.1em 0.4em 0.6em}.mw-parser-output #mp-other-lower{padding:0;border-color:#e2e2e2;margin-top:4px}.mw-parser-output #mp-dyk,.mw-parser-output #mp-otd,.mw-parser-output #mp-other-lower{padding-bottom:0.5em}.mw-parser-output #mp-other-lower .mp-h2{background:#eee;border-color:#ddd;color:#222}@media(max-width:875px){body.skin--responsive .mw-parser-output #mp-welcomecount{width:auto}body.skin--responsive .mw-parser-output #mp-topbanner{min-width:0;white-space:normal}body.skin--responsive .mw-parser-output #mp-portals{display:block;position:static;width:auto;min-width:0;text-align:center;border-top:1px solid #ddd;padding:0.4em 0;margin:0 0.4em}body.skin--responsive .mw-parser-output #mp-portals li{position:static;display:inline;padding:0 5px}body.skin--responsive .mw-parser-output #mp-topbanner .portal-hright{white-space:nowrap}body.skin--responsive .mw-parser-output table,body.skin--responsive .mw-parser-output tr,body.skin--responsive .mw-parser-output td,body.skin--responsive .mw-parser-output tbody{display:block!important;width:100%!important;box-sizing:border-box}body.skin--responsive .mw-parser-output #mp-tfp tr:first-child td:first-child a{text-align:center;display:table;margin:0 auto}}</style>
+                    <div id="mp-topbanner" class="mp-bordered">
+                        <div id="mp-welcomecount">
+                            <div id="mp-welcome">Welcome to <a href="/wiki/Wikipedia" title="Wikipedia">Wikipedia</a>,</div>
+                            <div id="mp-free">the <a href="/wiki/Free_content" title="Free content">free</a> <a href="/wiki/Encyclopedia" title="Encyclopedia">encyclopedia</a> that <a href="/wiki/Help:Introduction_to_Wikipedia" title="Help:Introduction to Wikipedia">anyone can edit</a>.</div>
+                            <div id="articlecount"><a href="/wiki/Special:Statistics" title="Special:Statistics">6,202,621</a> articles in <a href="/wiki/English_language" title="English language">English</a></div>
+                        </div>
+                        <ul id="mp-portals">
+                            <li><a href="/wiki/Portal:The_arts" title="Portal:The arts">The arts</a></li>
+                            <li class="portal-vmid"><a href="/wiki/Portal:Biography" title="Portal:Biography">Biography</a></li>
+                            <li class="portal-vbot"><a href="/wiki/Portal:Geography" title="Portal:Geography">Geography</a></li>
+                            <li class="portal-hmid"><a href="/wiki/Portal:History" title="Portal:History">History</a></li>
+                            <li class="portal-hmid portal-vmid"><a href="/wiki/Portal:Mathematics" title="Portal:Mathematics">Mathematics</a></li>
+                            <li class="portal-hmid portal-vbot"><a href="/wiki/Portal:Science" title="Portal:Science">Science</a></li>
+                            <li class="portal-hright"><a href="/wiki/Portal:Society" title="Portal:Society">Society</a></li>
+                            <li class="portal-hright portal-vmid"><a href="/wiki/Portal:Technology" title="Portal:Technology">Technology</a></li>
+                            <li class="portal-hright portal-vbot"><a href="/wiki/Wikipedia:Contents/Portals" title="Wikipedia:Contents/Portals">All portals</a></li>
+                        </ul>
+                    </div>
+                    <table role="presentation" id="mp-upper">
+                        <tbody><tr>
+                            <td id="mp-left" class="MainPageBG mp-bordered">
+                                <h2 id="mp-tfa-h2" class="mp-h2"><span id="From_today.27s_featured_article"></span><span class="mw-headline" id="From_today's_featured_article">From today's featured article</span></h2>
+                                <div id="mp-tfa"><div id="mp-tfa-img" style="float: left; margin: 0.5em 0.9em 0.4em 0em;">
+                                    <div class="thumbinner mp-thumb" style="background: transparent; border: none; padding: 0; max-width: 165px;">
+                                        <a href="/wiki/File:Yugo_History_map_of_invasion_7th_Army.jpg" class="image" title="Map of the Axis invasion of Yugoslavia"><img alt="Map of the Axis invasion of Yugoslavia" src="//upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Yugo_History_map_of_invasion_7th_Army.jpg/165px-Yugo_History_map_of_invasion_7th_Army.jpg" decoding="async" width="165" height="119" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Yugo_History_map_of_invasion_7th_Army.jpg/248px-Yugo_History_map_of_invasion_7th_Army.jpg 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Yugo_History_map_of_invasion_7th_Army.jpg/330px-Yugo_History_map_of_invasion_7th_Army.jpg 2x" data-file-width="2384" data-file-height="1722" /></a><div class="thumbcaption" style="padding: 0.25em 0; word-wrap: break-word;">Map of the Axis invasion of Yugoslavia</div></div>
+                                </div>
+                                    <p>The <b><a href="/wiki/1st_Cavalry_Division_(Kingdom_of_Yugoslavia)" title="1st Cavalry Division (Kingdom of Yugoslavia)">1st Cavalry Division</a></b> was a horsed <a href="/wiki/Cavalry" title="Cavalry">cavalry</a> <a href="/wiki/Military_organization#Commands,_formations,_and_units" title="Military organization">formation</a> of the <a href="/wiki/Royal_Yugoslav_Army" title="Royal Yugoslav Army">Royal Yugoslav Army</a> that formed part of the Yugoslav <a href="/wiki/1st_Army_Group_(Kingdom_of_Yugoslavia)" title="1st Army Group (Kingdom of Yugoslavia)">1st Army Group</a> during the <a href="/wiki/Nazi_Germany" title="Nazi Germany">German</a>-led <a href="/wiki/Axis_powers" title="Axis powers">Axis</a> <a href="/wiki/Invasion_of_Yugoslavia" title="Invasion of Yugoslavia">invasion</a> of the <a href="/wiki/Kingdom_of_Yugoslavia" title="Kingdom of Yugoslavia">Kingdom of Yugoslavia</a> in April&#160;1941. Along with the rest of the Yugoslav Army, the 1st Cavalry Division began <a href="/wiki/Mobilization" title="Mobilization">mobilising</a> on 3&#160;April&#160;1941. Three days later the Germans commenced operations against the Yugoslav frontiers <i>(map of operations pictured)</i>. By the end of the following day, the division's cavalry <a href="/wiki/Brigade" title="Brigade">brigade</a> headquarters and all of the division's cavalry <a href="/wiki/Regiment" title="Regiment">regiments</a> had been detached for duty with other formations. The divisional-level units remained in the vicinity of <a href="/wiki/Zagreb" title="Zagreb">Zagreb</a> until 10&#160;April, when they were ordered to establish a defensive line southeast of Zagreb along the <a href="/wiki/Sava" title="Sava">Sava</a> river, with infantry and artillery support. The division had only begun to deploy for this task when the German <a href="/wiki/14th_Panzer_Division_(Wehrmacht)" title="14th Panzer Division (Wehrmacht)">14th Panzer Division</a> captured Zagreb. The divisional headquarters and all attached units surrendered. (<b><a href="/wiki/1st_Cavalry_Division_(Kingdom_of_Yugoslavia)" title="1st Cavalry Division (Kingdom of Yugoslavia)">Full&#160;article...</a></b>)
+                                    </p>
+                                    <div class="tfa-recent" style="text-align: right;">
+                                        Recently featured: <div class="hlist hlist-separated inline">
+                                        <ul><li><a href="/wiki/Pyramid_of_Neferirkare" title="Pyramid of Neferirkare">Pyramid of Neferirkare</a></li>
+                                            <li><a href="/wiki/Battle_of_Pontvallain" title="Battle of Pontvallain">Battle of Pontvallain</a></li>
+                                            <li><i><a href="/wiki/The_Princesse_de_Broglie" title="The Princesse de Broglie">The Princesse de Broglie</a></i></li></ul>
+                                    </div></div>
+                                    <div class="tfa-footer hlist hlist-separated noprint" style="text-align: right;">
+                                        <ul><li><b><a href="/wiki/Wikipedia:Today%27s_featured_article/December_2020" title="Wikipedia:Today&#39;s featured article/December 2020">Archive</a></b></li>
+                                            <li><b><a href="https://lists.wikimedia.org/mailman/listinfo/daily-article-l" class="extiw" title="mail:daily-article-l">By email</a></b></li>
+                                            <li><b><a href="/wiki/Wikipedia:Featured_articles" title="Wikipedia:Featured articles">More featured articles</a></b></li></ul>
+                                    </div></div>
+                                <h2 id="mp-dyk-h2" class="mp-h2"><span class="mw-headline" id="Did_you_know_...">Did you know&#160;...</span></h2>
+                                <div id="mp-dyk">
+                                    <div class="dyk-img" style="float: right; margin-left: 0.5em;">
+                                        <div class="thumbinner mp-thumb" style="background: transparent; border: none; padding: 0; max-width: 117px;">
+                                            <a href="/wiki/File:Neil_Druckmann_SDCC_2015.jpg" class="image" title="Neil Druckmann"><img alt="Neil Druckmann" src="//upload.wikimedia.org/wikipedia/commons/thumb/3/33/Neil_Druckmann_SDCC_2015.jpg/117px-Neil_Druckmann_SDCC_2015.jpg" decoding="async" width="117" height="167" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/3/33/Neil_Druckmann_SDCC_2015.jpg/176px-Neil_Druckmann_SDCC_2015.jpg 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/3/33/Neil_Druckmann_SDCC_2015.jpg/234px-Neil_Druckmann_SDCC_2015.jpg 2x" data-file-width="1295" data-file-height="1850" /></a><div class="thumbcaption" style="padding: 0.25em 0; word-wrap: break-word;">Neil Druckmann</div></div>
+                                    </div>
+                                    <ul><li>... that the themes of violence in <i><b><a href="/wiki/The_Last_of_Us_Part_II" title="The Last of Us Part II">The Last of Us Part&#160;II</a></b></i> were inspired by <a href="/wiki/Neil_Druckmann" title="Neil Druckmann">Neil Druckmann</a>'s <i>(pictured)</i> memories of watching footage of the <a href="/wiki/2000_Ramallah_lynching" title="2000 Ramallah lynching">2000 Ramallah lynching</a>?</li>
+                                        <li>... that 25&#160;million tourists—more than twice the population of the entire state—visited the <b><a href="/wiki/Mandakini_River" title="Mandakini River">Mandakini River</a></b> in <a href="/wiki/Uttarakhand" title="Uttarakhand">Uttarakhand</a> in 2011?</li>
+                                        <li>... that <b><a href="/wiki/Michelle_Curran" title="Michelle Curran">Michelle Curran</a></b> is the only female flying with the <a href="/wiki/United_States_Air_Force_Thunderbirds" title="United States Air Force Thunderbirds">United States Air Force Thunderbirds</a> in the 2020 season?</li>
+                                        <li>... that in its early years, the <b><a href="/wiki/University_of_Calcutta" title="University of Calcutta">University of Calcutta</a></b> held examinations in the <a href="/wiki/Kolkata_Town_Hall" title="Kolkata Town Hall">Kolkata Town Hall</a> and in tents in the <a href="/wiki/Maidan_(Kolkata)" title="Maidan (Kolkata)">Maidan</a> urban park?</li>
+                                        <li>... that as the governor of North Sumatra, <b><a href="/wiki/Ulung_Sitepu" title="Ulung Sitepu">Ulung Sitepu</a></b> donated 2,400 bottles of <a href="/wiki/Passiflora_edulis" title="Passiflora edulis">passion fruit</a> drinks for the inaugural <a href="/wiki/GANEFO" title="GANEFO">Games of the New Emerging Forces</a>?</li>
+                                        <li>... that <b><a href="/wiki/224_West_57th_Street" title="224 West 57th Street">224&#160;West 57th&#160;Street</a></b> was built as two separate automobile showrooms, which were occupied by their original clients for less than a decade after completion?</li>
+                                        <li>... that <b><a href="/wiki/Hermann_Schey" title="Hermann Schey">Hermann Schey</a></b>, a Jewish <a href="/wiki/Bass-baritone" title="Bass-baritone">bass-baritone</a>, travelled regularly from Berlin to Amsterdam to perform in Bach's <i><a href="/wiki/St_Matthew_Passion" title="St Matthew Passion">St&#160;Matthew Passion</a></i>, and went into hiding there during World War&#160;II?</li>
+                                        <li>... that despite ample <a href="/wiki/Epigraphy" title="Epigraphy">epigraphic</a> evidence mentioning his name, nothing is known about <a href="/wiki/Phoenicia" title="Phoenicia">Phoenician</a> king <b><a href="/wiki/Yatonmilk" title="Yatonmilk">Yatonmilk</a></b><span class="nowrap">&#39;s</span> reign?</li></ul>
+                                    <div class="dyk-footer hlist hlist-separated noprint" style="margin-top: 0.5em; text-align: right;">
+                                        <ul><li><b><a href="/wiki/Wikipedia:Recent_additions" title="Wikipedia:Recent additions">Archive</a></b></li>
+                                            <li><b><a href="/wiki/Help:Your_first_article" title="Help:Your first article">Start a new article</a></b></li>
+                                            <li><b><a href="/wiki/Template_talk:Did_you_know" title="Template talk:Did you know">Nominate an article</a></b></li></ul>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="mp-bordered mid-table">
+                            </td>
+                            <td id="mp-right" class="MainPageBG mp-bordered">
+                                <h2 id="mp-itn-h2" class="mp-h2"><span class="mw-headline" id="In_the_news">In the news</span></h2>
+                                <div id="mp-itn"><style data-mw-deduplicate="TemplateStyles:r976327607">.mw-parser-output .itn-special{margin:0px 1px 4px 1px;padding:5px;text-align:center;border-style:solid;background:#fafcfe;border:1px solid #a3b0bf}</style><div class="itn-special hlist hlist-separated">
+                                    <dl><dt><a href="/wiki/COVID-19_pandemic" title="COVID-19 pandemic"><span class="nowrap">COVID-19</span> pandemic</a></dt>
+                                        <dd><a href="/wiki/Coronavirus_disease_2019" title="Coronavirus disease 2019">Disease</a></dd>
+                                        <dd><a href="/wiki/Severe_acute_respiratory_syndrome_coronavirus_2" title="Severe acute respiratory syndrome coronavirus 2">Virus</a></dd>
+                                        <dd><a href="/wiki/COVID-19_pandemic_by_country_and_territory" title="COVID-19 pandemic by country and territory"><span class="nowrap">By location</span></a></dd>
+                                        <dd><a href="/wiki/Impact_of_the_COVID-19_pandemic" title="Impact of the COVID-19 pandemic">Impact</a></dd>
+                                        <dd><a href="/wiki/COVID-19_vaccine" title="COVID-19 vaccine">Vaccines</a></dd>
+                                        <dd><a href="/wiki/Portal:Coronavirus_disease_2019" title="Portal:Coronavirus disease 2019">Portal</a></dd></dl>
+                                </div>
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div data-tabname="About">
+        <h2>About</h2>
+        <div id="mp-otd">
+            <p data-tabname="para"><b><a href="/wiki/December_6" title="December 6">December 6</a></b>: <b><a href="/wiki/Saint_Nicholas" title="Saint Nicholas">Saint Nicholas Day</a></b> (Western Christianity); <b><a href="/wiki/Independence_Day_(Finland)" title="Independence Day (Finland)">Independence Day</a></b> in Finland (<a href="/wiki/1917" title="1917">1917</a>)
+            </p>
+            <div data-tabname="links" style="float:right;margin-left:0.5em;" id="mp-otd-img">
+                <div class="thumbinner mp-thumb" style="background: transparent; border: none; padding: 0; max-width: 120px;">
+                    <a href="/wiki/File:Theodore_Roosevelt_(Nobel_1906).png" class="image" title="Theodore Roosevelt"><img alt="Theodore Roosevelt" src="//upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Theodore_Roosevelt_%28Nobel_1906%29.png/120px-Theodore_Roosevelt_%28Nobel_1906%29.png" decoding="async" width="120" height="170" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Theodore_Roosevelt_%28Nobel_1906%29.png/180px-Theodore_Roosevelt_%28Nobel_1906%29.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Theodore_Roosevelt_%28Nobel_1906%29.png/240px-Theodore_Roosevelt_%28Nobel_1906%29.png 2x" data-file-width="280" data-file-height="396"></a><div class="thumbcaption" style="padding: 0.25em 0; word-wrap: break-word;">Theodore Roosevelt</div></div>
+            </div>
+            <ul data-tabname="list" ><li><a href="/wiki/1060" title="1060">1060</a> – <b><a href="/wiki/B%C3%A9la_I_of_Hungary" title="Béla I of Hungary">Béla&nbsp;I</a></b> was crowned <a href="/wiki/List_of_Hungarian_monarchs" title="List of Hungarian monarchs">King of Hungary</a> in <a href="/wiki/Sz%C3%A9kesfeh%C3%A9rv%C3%A1r" title="Székesfehérvár">Székesfehérvár</a>.</li>
+                <li><a href="/wiki/1240" title="1240">1240</a> – After days of bombardment,  <a href="/wiki/Mongol_invasion_of_Kievan_Rus%27" title="Mongol invasion of Kievan Rus'">Mongol invaders</a> under <a href="/wiki/Batu_Khan" title="Batu Khan">Batu Khan</a> <b><a href="/wiki/Siege_of_Kiev_(1240)" title="Siege of Kiev (1240)">breached the walls</a></b> of <a href="/wiki/Kyiv" title="Kyiv">Kiev</a> and proceeded to plunder the city and slaughter its inhabitants.</li>
+                <li><a href="/wiki/1904" title="1904">1904</a> – President <a href="/wiki/Theodore_Roosevelt" title="Theodore Roosevelt">Theodore Roosevelt</a> <i>(pictured)</i> announced the <b><a href="/wiki/Roosevelt_Corollary" title="Roosevelt Corollary">Roosevelt Corollary</a></b> to the <a href="/wiki/Monroe_Doctrine" title="Monroe Doctrine">Monroe Doctrine</a>, justifying the exercise of "international police power" by the U.S. in the Western Hemisphere.</li>
+                <li><a href="/wiki/1975" title="1975">1975</a> – Four members of the <a href="/wiki/Provisional_Irish_Republican_Army" title="Provisional Irish Republican Army">Provisional Irish Republican Army</a> <b><a href="/wiki/Balcombe_Street_siege" title="Balcombe Street siege">took two people hostage</a></b> in a house on Balcombe Street in London, surrendering six days later.</li>
+                <li><a href="/wiki/1990" title="1990">1990</a> – An <a href="/wiki/Italian_Air_Force" title="Italian Air Force">Italian Air Force</a> military jet, abandoned by its pilot after an on-board fire, <b><a href="/wiki/1990_Italian_Air_Force_MB-326_crash" title="1990 Italian Air Force MB-326 crash">crashed into a high school</a></b> near <a href="/wiki/Bologna" title="Bologna">Bologna</a>, killing 12 students and injuring 88 other people.</li></ul>
+            <div  class="hlist hlist-separated" style="margin-top: 0.5em;"><ul><li><b><a href="/wiki/Robert_Spear_Hudson" title="Robert Spear Hudson">Robert Spear Hudson</a></b>  (<abbr title="born">b.</abbr>&nbsp;1812)</li><li><b><a href="/wiki/Johann_Palisa" title="Johann Palisa">Johann Palisa</a></b>  (<abbr title="born">b.</abbr>&nbsp;1848)</li><li><b><a href="/wiki/Devan_Nair" title="Devan Nair">Devan Nair</a></b>  (<abbr title="died">d.</abbr>&nbsp;2005)</li></ul></div>
+            <div style="margin-top: 0.5em;">
+                More anniversaries: <div class="hlist hlist-separated inline nowraplinks">
+                <ul><li><a href="/wiki/December_5" title="December 5">December 5</a></li>
+                    <li><b><a href="/wiki/December_6" title="December 6">December 6</a></b></li>
+                    <li><a href="/wiki/December_7" title="December 7">December 7</a></li></ul>
+            </div></div>
+            <div class="otd-footer hlist hlist-separated noprint" style="text-align: right;">
+                <ul><li><b><a href="/wiki/Wikipedia:Selected_anniversaries/December" title="Wikipedia:Selected anniversaries/December">Archive</a></b></li>
+                    <li><b><a href="https://lists.wikimedia.org/mailman/listinfo/daily-article-l" class="extiw" title="mail:daily-article-l">By email</a></b></li>
+                    <li><b><a href="/wiki/List_of_days_of_the_year" title="List of days of the year">List of days of the year</a></b></li></ul>
+            </div></div>
+    </div>
+    <div data-tabname="Blog">
+        <h2>Blog</h2>
+        <div id="mp-tfp">
+            <table role="presentation" style="margin:0 3px 3px; width:100%; box-sizing:border-box; text-align:left; background-color:transparent; border-collapse:collapse;">
+                <tbody><tr>
+                    <td style="padding:0 0.9em 0 0; width:300px;"><a href="/wiki/File:Dante_Gabriel_Rossetti_-_The_Day_Dream_-_Google_Art_Project.jpg" class="image" title="The Day Dream"><img alt="The Day Dream" src="//upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Dante_Gabriel_Rossetti_-_The_Day_Dream_-_Google_Art_Project.jpg/300px-Dante_Gabriel_Rossetti_-_The_Day_Dream_-_Google_Art_Project.jpg" decoding="async" width="300" height="521" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Dante_Gabriel_Rossetti_-_The_Day_Dream_-_Google_Art_Project.jpg/450px-Dante_Gabriel_Rossetti_-_The_Day_Dream_-_Google_Art_Project.jpg 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Dante_Gabriel_Rossetti_-_The_Day_Dream_-_Google_Art_Project.jpg/600px-Dante_Gabriel_Rossetti_-_The_Day_Dream_-_Google_Art_Project.jpg 2x" data-file-width="3820" data-file-height="6635"></a>
+                    </td>
+                    <td style="padding:0 6px 0 0">
+                        <p><i><b><a href="/wiki/The_Day_Dream_(painting)" title="The Day Dream (painting)">The Day Dream</a></b></i> is an oil-on-canvas painting created by the English <a href="/wiki/Pre-Raphaelite_Brotherhood" title="Pre-Raphaelite Brotherhood">Pre-Raphaelite</a> poet and artist <a href="/wiki/Dante_Gabriel_Rossetti" title="Dante Gabriel Rossetti">Dante Gabriel Rossetti</a> in 1880. His model was <a href="/wiki/Jane_Morris" title="Jane Morris">Jane Morris</a>, with whom he had a complex relationship, and who "consumed and obsessed him in paint, poetry, and life". She is shown in this painting in a flowing green silk dress, surrounded by the dark, shady foliage of a <a href="/wiki/Acer_pseudoplatanus" title="Acer pseudoplatanus">sycamore</a> tree. Her book forgotten, she is immersed in her daydreams, while a sprig of <a href="/wiki/Lonicera_periclymenum" title="Lonicera periclymenum">honeysuckle</a> dangles from her fingers, perhaps as a token of love. The painting is in the collection of the <a href="/wiki/Victoria_and_Albert_Museum" title="Victoria and Albert Museum">Victoria and Albert Museum</a> in London.
+                        </p>
+                        <p style="text-align:left;"><small>Painting credit: <a href="/wiki/Dante_Gabriel_Rossetti" title="Dante Gabriel Rossetti">Dante Gabriel Rossetti</a></small></p>
+                        <div class="potd-recent" style="text-align:right;">
+                            Recently featured: <div class="hlist hlist-separated inline">
+                            <ul><li><a href="/wiki/Template:POTD/2020-12-05" title="Template:POTD/2020-12-05">Martin Van Buren</a></li>
+                                <li><a href="/wiki/Template:POTD/2020-12-04" title="Template:POTD/2020-12-04">Santa Maria della Vittoria</a></li>
+                                <li><a href="/wiki/Template:POTD/2020-12-03" title="Template:POTD/2020-12-03">Mantled guereza</a></li></ul>
+                        </div></div>
+                        <div class="potd-footer hlist hlist-separated noprint" style="text-align:right;">
+                            <ul><li><b><a href="/wiki/Wikipedia:Picture_of_the_day/Archive" title="Wikipedia:Picture of the day/Archive">Archive</a></b></li>
+                                <li><b><a href="/wiki/Wikipedia:Featured_pictures" title="Wikipedia:Featured pictures">More featured pictures</a></b></li></ul>
+                        </div>
+                    </td></tr></tbody></table></div>
+    </div>
+    <div data-tabname="Contact">
+        <h2>Contact</h2>
+        <div class="container">
+            <form id="contact" action="" method="post">
+                <h3>Colorlib Contact Form</h3>
+                <h4>Contact us for custom quote</h4>
+                <fieldset>
+                    <input placeholder="Your name" type="text" tabindex="1" required autofocus>
+                </fieldset>
+                <fieldset>
+                    <input placeholder="Your Email Address" type="email" tabindex="2" required>
+                </fieldset>
+                <fieldset>
+                    <input placeholder="Your Phone Number (optional)" type="tel" tabindex="3" required>
+                </fieldset>
+                <fieldset>
+                    <input placeholder="Your Web Site (optional)" type="url" tabindex="4" required>
+                </fieldset>
+                <fieldset>
+                    <textarea placeholder="Type your message here...." tabindex="5" required></textarea>
+                </fieldset>
+                <fieldset>
+                    <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
+                </fieldset>
+                <p class="copyright">Designed by <a href="https://colorlib.com" target="_blank" title="Colorlib">Colorlib</a></p>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="tabs.js"></script>
+</body>
+</html>

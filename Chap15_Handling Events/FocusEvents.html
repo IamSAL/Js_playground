@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+<style>
+    .help-text {
+        padding: 10px;
+        background-color: #e8e8e8;
+        border-radius: 5px;
+        /* width: 80%; */
+    }
+</style>
+<body>
+<script>
+    let time=Date.now();
+    console.log(`1st:${time}`);
+</script>
+    <div class="container">
+        <form action="#" class="form u-full-width">
+            <label for="name" class="label u-full-width">
+                Name:
+            </label>
+            <input type="text" name="name" id="name" data-help="Enter Your Full Name Here" class="u-full-width">
+
+            <label for="email" class="label u-full-width">
+                Email:
+            </label>
+            <input type="email" name="name" id="email" data-help="Enter Your Email lik your@mail.com" class="u-full-width">
+
+            <label for="phone" class="label u-full-width">
+                Number:
+            </label>
+            <input type="number" name="name" id="phone" data-help="Phone number 01XXXXXXXXX" class="u-full-width">
+            <span class="help-text">
+
+            </span>
+            <input type="submit" class="u-pull-right" data-help="Click to submit data!">
+        </form>
+    </div>
+
+    <script>
+        let worker=new Worker('./worker.js');
+        window.addEventListener('beforeunload',confirmExit)
+
+        function confirmExit(e){
+            e.preventDefault();
+            e.returnValue='test';
+        }
+
+
+        window.addEventListener('load',(e)=>{
+            console.log(`2nd:${Date.now()}`);
+            console.log(`Loaded: ${Date.now()-time}ms`);
+        })
+        let inputs=document.querySelectorAll('input');
+       inputs.forEach(field=>{
+           field.addEventListener('focus',handler);
+           field.addEventListener('blur',()=>{
+               worker.addEventListener("message", e=>{
+                   console.log('called')
+                   document.querySelector('.help-text').innerHTML=e.data;
+               })
+
+               worker.postMessage(JSON.stringify({name:"Salman",email:"testmail",phone:3241235}));
+
+           });
+       })
+
+
+        function handler(e){
+           let helpText=e.target.getAttribute('data-help');
+            document.querySelector('.help-text').innerHTML=helpText;
+        }
+
+
+
+    </script>
+
+</body>
+</html>

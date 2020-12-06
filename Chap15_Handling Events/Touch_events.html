@@ -16,18 +16,25 @@
 
 
 <script>
-    window.addEventListener('touchstart',(e)=>{
 
-        for(let touch of e.changedTouches){
+    function update(e){
+        e.preventDefault();
+        let dots=document.querySelectorAll('dot');
+        for(let dot of dots){
+            dot.remove();
+        }
+        for(let touch of e.touches){
             let dot=document.createElement('dot');
             dot.style.top=touch.clientY-50+'px';
             dot.style.left=touch.clientX-50+'px';
             document.body.appendChild(dot);
-            console.log(touch.clientX,touch.clientX);
         }
 
+    }
+    window.addEventListener('touchstart',update)
+    window.addEventListener('touchend',update)
+    window.addEventListener('touchmove',update)
 
-    })
 
 </script>
 </body>

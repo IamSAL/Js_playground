@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    .test{
+        padding: 50px;
+
+
+        font-size: 40px;
+    }
+    .bar {
+        height: 7px;
+        background-color: orange;
+        position: fixed;
+        top: 0;
+        margin: 0px;
+    }
+    body{
+        margin: unset;
+        background-color: lightgrey;
+    }
+</style>
+<body>
+<div class="bar">
+
+</div>
+<div class="test">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium consequatur consequuntur culpa deleniti dignissimos doloribus dolorum ea eaque earum eos error exercitationem fugit impedit inventore iure magni necessitatibus nesciunt nostrum obcaecati qui rem repellendus tempora, temporibus! Ab cum cupiditate dignissimos excepturi fuga, id illo illum inventore ipsum nihil nostrum nulla omnis placeat quaerat temporibus totam ullam voluptas! Eos error explicabo nesciunt recusandae repudiandae. Aliquam commodi delectus nulla sint veniam vitae voluptas voluptate! Ab aliquid, architecto aspernatur atque deserunt ea eveniet ex exercitationem explicabo, harum impedit ipsa ipsam nemo nihil nostrum odit possimus, quis repudiandae sapiente tempora unde veritatis vitae voluptates.</div>
+<div class="test">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur autem commodi dicta dolorem, exercitationem harum ipsum minus nulla porro possimus qui quod, repellendus voluptatibus. Ab atque culpa debitis doloremque earum eligendi esse ex excepturi explicabo hic illo incidunt iste modi mollitia nemo nostrum officiis placeat porro possimus, qui quos recusandae repellat saepe sequi sunt velit voluptatem. Commodi, cupiditate exercitationem in laudantium nam quaerat ratione rem voluptatibus! Ab ad alias amet animi aperiam asperiores aspernatur beatae consequuntur cumque cupiditate delectus dolor doloribus eius error explicabo facere, illum in iste iure iusto laudantium, maxime mollitia nam nesciunt nisi non nostrum odit pariatur perspiciatis quae quasi recusandae reiciendis repudiandae sed, tenetur vel voluptas! Aut, repellendus tempore! Aliquam animi at commodi, dolorem error exercitationem illum minus modi nihil nulla provident quasi quibusdam quis similique vel veritatis voluptas voluptate. Aut dolor eius id illo in laboriosam magnam minima obcaecati officiis placeat ratione repellendus rerum, sapiente sequi similique soluta tempore vitae. Adipisci aliquid atque aut autem beatae blanditiis commodi consequuntur dicta distinctio dolore doloremque dolores ea error et eum explicabo fugit harum iste labore libero maxime natus nesciunt nihil nostrum obcaecati odio odit perspiciatis quaerat quia reiciendis, sapiente sequi tenetur totam velit veniam veritatis voluptatem! Accusantium amet at deleniti eveniet in incidunt inventore laborum maiores nobis placeat provident quaerat temporibus, tenetur velit voluptates. Aliquid animi doloribus earum enim eveniet exercitationem, facilis minus nihil nisi nulla odio placeat quaerat quis, quisquam totam! A accusamus consectetur deleniti eaque enim eos, explicabo, in ipsa minima obcaecati possimus quod repellat! Accusamus aliquid delectus deleniti doloremque magnam neque non rerum, sed veritatis voluptatem! Ad adipisci aliquam culpa dolore impedit quis quod repudiandae sequi velit vero. Corporis eaque earum et explicabo fugit, harum iste molestiae natus officiis porro quaerat quo quod rem similique suscipit tempora unde ut vel voluptas voluptatum! Deserunt fugit labore maxime pariatur repudiandae. Corporis dolor magnam, minus neque nulla officia optio quae quidem repellat voluptatibus. Beatae et laudantium molestiae nulla, placeat sequi soluta vel. Assumenda beatae blanditiis commodi consequatur cupiditate deserunt et expedita fuga fugit hic labore laboriosam magnam minus nobis numquam odit, officiis placeat qui quibusdam quos, soluta sunt tempore veniam! Ab architecto dolor facere, fugit laboriosam, nam neque nesciunt nostrum numquam quidem, quisquam ratione? A adipisci consequatur culpa eaque et excepturi exercitationem fugiat ipsam libero magni necessitatibus neque non nulla officia optio, porro provident qui quibusdam quis recusandae tempora totam velit voluptatum! Consequuntur doloremque illum ullam! Blanditiis doloremque laudantium neque nesciunt quas rem soluta tempora tempore unde vel. Ad enim et non quibusdam sint. Cupiditate doloribus facere perferendis quis sint. A ab accusamus alias aperiam aspernatur commodi consequuntur, cupiditate distinctio dolor dolorem doloremque ducimus fuga fugit itaque laborum nulla obcaecati, odio quasi ratione sint sit sunt temporibus vitae. Accusantium ducimus expedita iste mollitia nulla obcaecati perferendis quidem repellendus veniam, voluptate. A ab aliquam assumenda at culpa eaque error exercitationem explicabo fugiat harum illum incidunt laboriosam molestias non numquam quia quibusdam, quidem saepe sed, sint sit, vel velit veritatis. Natus nesciunt obcaecati placeat, ullam velit voluptate voluptatem voluptatum!</div>
+
+<script>
+    let bar=document.querySelector('.bar')
+    window.addEventListener('scroll',(e)=>{
+        let max=document.body.scrollHeight-innerHeight;
+        bar.style.width=scrollY*100/max+'%';
+    })
+</script>
+</body>
+</html>
