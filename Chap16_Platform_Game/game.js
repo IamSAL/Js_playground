@@ -134,7 +134,7 @@ class DOMDisplay{
     }
 }
 
-const scale=40;
+const scale=30;
 function drawGrid(level){
     return elt("table",{
         class: "background",
