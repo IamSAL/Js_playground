@@ -8,7 +8,6 @@ function createTrail(X=Math.random()*innerWidth+1,Y=Math.random()*innerHeight+1,
     trail.className=`animate__animated animate__`+animateClasses[Math.round(Math.random()*animateClasses.length)];
     trail.style.top=Y+'px';
     trail.style.left=X+'px';
-    trail.style.transition=`0.2s`;
     trail.style.opacity=Math.random();
     trail.style.padding=Size+'px';
     if(Math.random()>0.3){
@@ -18,11 +17,7 @@ function createTrail(X=Math.random()*innerWidth+1,Y=Math.random()*innerHeight+1,
         trail.classList.add('trail');
     }
     trail.style.backgroundColor=Color;
-    trail.addEventListener('mouseenter',e=>{
-        e.target.style.backgroundColor=getRandomColor();
-        e.target.style.boxShadow=`7px 10px 20px rgba(0, 0, 0, 0.2)`;
-    })
-    document.body.appendChild(trail);
+    document.querySelector('.root').appendChild(trail);
 }
 
 window.addEventListener('keydown',next)
@@ -30,7 +25,7 @@ window.addEventListener('touchstart',next)
 window.addEventListener('touchend',next)
 function next(e){
         if(e.key==="ArrowUp" || e.key==="ArrowDown" ||e.touches){
-            document.body.innerHTML='';
+            document.querySelector('.root').innerHTML='';
             generateTrails(Math.random()*100+15);
         }
 }
@@ -52,14 +47,15 @@ function getRandomColor() {
 let movetrails=(e)=>{
     let trails=document.querySelectorAll('.trail');
     trails.forEach(trail=>{
-        trail.style.top=e.clientY+Math.random()*20+50+'px';
+        trail.style.top=e.clientY+250+'px';
         trail.style.left=e.clientX+Math.random()*20+50+'px';
         trail.style.transition=Math.random()+'s';
         trail.style.boxShadow=`7px 10px 20px rgba(0, 0, 0, 0.2)`;
     })
 }
 
-window.addEventListener('mouseover',movetrails);
+document.querySelector('.root').addEventListener('mousemove',movetrails);
+
 
 
 

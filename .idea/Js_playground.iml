@@ -7,5 +7,6 @@
     <orderEntry type="library" name="owl.carousel" level="application" />
     <orderEntry type="library" name="skeleton" level="application" />
     <orderEntry type="library" name="animate.css" level="application" />
+    <orderEntry type="library" name="tailwindcss" level="application" />
   </component>
 </module>
