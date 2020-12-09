@@ -134,7 +134,7 @@ class DOMDisplay{
     }
 }
 
-const scale=45;
+const scale=40;
 function drawGrid(level){
     return elt("table",{
         class: "background",
@@ -249,6 +249,7 @@ Lava.prototype.update=function (time,state){
     if(!state.level.touches(newPos,this.size,"wall")){
         return new Lava(newPos,this.speed,this.reset);
     }else if(this.reset){
+        //something wrong here for v
         return new Lava(this.reset,this.speed,this.reset);
     }else{
         return new Lava(this.pos,this.speed.times(-1))
@@ -321,7 +322,7 @@ function runAnimation(frameFunc){
 }
 
 function runLevel(level,Display){
-    let display=new Display(document.body,level);
+    let display=new Display(document.querySelector('.game'),level);
     let state=State.start(level);
     let ending=1;
     return new Promise((resolve=>{
