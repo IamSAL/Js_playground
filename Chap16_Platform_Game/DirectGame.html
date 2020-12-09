@@ -50,6 +50,8 @@
     }
 
     .game {
+        max-width: 700px;
+        max-height: 500px;
         overflow: hidden;
         position: relative;
     }
@@ -80,23 +82,17 @@
         border-radius: 50%;
     }
     .touchcontrol {
-        position: absolute;
-        bottom: 20px;
-        left: 20px;
+        z-index: 999;
     }
 
     .touchcontrol div {
+        z-index: 999;
         margin-bottom: 41px;
         margin-left: 10px;
     }
 
 </style>
 <body>
-
-
-<div class="game">
-
-</div>
 <div class="touchcontrol">
     <div id="ubtn" class="touchBTN" style="display:block;">
         ^
@@ -107,6 +103,11 @@
     <div id="rbtn" class="touchBTN">
         >
     </div>
+
+</div>
+
+
+<div class="game">
 
 </div>
 

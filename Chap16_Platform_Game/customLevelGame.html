@@ -50,9 +50,9 @@
     }
 
     .game {
+        max-width: 700px;
+        max-height: 500px;
         overflow: hidden;
-        max-width: 1200px;
-        max-height: 850px;
         position: relative;
     }
 
@@ -82,23 +82,17 @@
         border-radius: 50%;
     }
     .touchcontrol {
-        position: absolute;
-        bottom: 20px;
-        left: 20px;
+        z-index: 999;
     }
 
     .touchcontrol div {
+        z-index: 999;
         margin-bottom: 41px;
         margin-left: 10px;
     }
 
 </style>
 <body>
-
-
-<div class="game">
-
-</div>
 <div class="touchcontrol">
     <div id="ubtn" class="touchBTN" style="display:block;">
         ^
@@ -111,35 +105,12 @@
     </div>
 
 </div>
-<div class="start">
-    <button style="display: block; padding:10px; background-color:yellow;border:1px solid;margin-left:200px;" id="default">
-        Play default levels
-    </button>
 
-    <ul style="margin-left:200px; padding:20px; ">
-        Create Your Own levels:
-        <li>. : empty</li>
-        <li>#:wall</li>
-        <li>_:lava</li>
-        <li>0:coins</li>
-        <li>|:vertically moving lava</li>
-        <li>=:horizontally moving lava</li>
-    </ul>
-    <form action="#" class="level mx-auto " style="margin-left:200px;">
-        <label for="Design your own level:"></label>
-        <textarea name="level" id="level" cols="100" rows="15" style="text-align:left;font-family:monospace;">
-......................
-..#................#..
-..#..............=.#..
-..#.........o.o.o..#..
-..#..@.....######..#..
-..#####............#..
-......#++++++++++++#..
-......##############..
-......................</textarea>
-        <input type="submit" style="display: block;">
-    </form>
+
+<div class="game">
+
 </div>
+
 <script src="Levels.js"></script>
 <script src="touchControl.js"></script>
 <script src="game.js"></script>
