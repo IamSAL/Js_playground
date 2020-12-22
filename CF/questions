@@ -1,0 +1,176 @@
+box.triple = function triple (x) {
+    //return x multiplied by 3
+
+
+};
+
+box.numberToString= function numberToString(x) {
+    // x is number
+    // return x as a string
+
+
+};
+
+box.floatToInt= function floatToInt(x) {
+    // x is a float
+    // return x as a truncated int
+
+
+};
+
+box.isOdd = function isOdd (x) {
+    // x is an integer.
+    // return true if the number is odd and false if it is even
+
+
+};
+
+box.squareRoot = function squareRoot (x) {
+    //return square root of x
+
+
+};
+
+box.cubeSurfaceArea = function cubeSurfaceArea(x) {
+    // x is the length of the cube's sides
+    // return the surface area of the cube, round the result to 4 digits
+
+
+};
+
+box.reverseString = function reverseString(x) {
+    // x is a string. rearrange the string from the last to the first character
+
+
+};
+
+box.stringToNumber = function stringToNumber(x) {
+    // x is a string that contains a number
+    // return x as a number
+
+
+};
+
+box.stringToNumber = function stringToNumber(x) {
+    // x is a string that contains a number
+    // return x as a number
+
+
+};
+
+box.dateRank = function dateRank (x) {
+    // x is a date in 2019 as string (example: "06/30/2019")
+    // return the rank of the day in 2019 (i.e. "09/01/2019" translates to 244)
+
+
+};
+
+box.sphereVolume = function sphereVolume(x) {
+    // x is radius of a sphere
+    // return the volume of the sphere, round the result to 4 digits
+
+
+};
+
+box.hasOnlyVowels= function hasOnlyVowels(x) {
+    // x is a string. return true if every char in the string is an english vowel
+
+
+};
+
+box.flatten = function flatten (x) {
+    // x is an arbitrarily nested, multidimensional array.
+    // return x flattened (all items in 1 dimension)
+
+
+};
+
+box.getFileExtension= function getFileExtension(x) {
+    // x is a string (representing a file name)
+    // return the file extension (everything after the last dot)
+
+
+};
+
+box.oddElements = function oddElements (x) {
+    // x is an array of at least 2 unique elements
+    // return the elements that are on odd positions in the array
+
+
+};
+
+box.longestString= function longestString(x) {
+    // x is an array of strings
+    // return the longest string on x
+
+
+};
+
+box.doubleIndex= function doubleIndex(x) {
+    // x is an array of numbers. Return elements on the array, where the value is equal to their index doubled.
+    // [3, 2, 4, 6, 7] returns [2, 4, 6] (having the indices 1, 2, 3)
+
+
+};
+
+box.swapHalves= function swapHalves(x) {
+    //x is a string. Cut x in half and move the second half to the beginning
+    //'1234' will become '3412', '12345' will become '34512'
+
+
+};
+
+box.capitalizeFirstLetters = function capitalizeFirstLetters(x) {
+    // x is a string. Make each first letter of each space-separated word uppercase.
+    // example: "this is a string" -> "This Is A String"
+
+};
+
+box.toCamelCase = function toCamelCase(x) {
+    // x is a string using kebab-case or snake_case
+    // return the same string using camelCase
+
+
+};
+
+box.invertCase = function invertCase (x) {
+    // x is a string. turn lowercase letters to uppercase and vice versa.
+
+
+};
+
+box.sortingType = function sortingType (x) {
+    // x is an array of at least 2 unique members
+    // return 0 if it's not sorted, 1 if it's ascending, -1 if it's descending
+
+
+};
+
+box.mostFrequentItem = function mostFrequentItem (x) {
+    // x is an array of at least 1 item.
+    // return the most frequent item (there will always be just one).
+
+
+};
+
+box.isBalanced = function isBalanced (x) {
+    // x is a string. return whether its parentheses are balanced
+    // that is, whether every opening ( has a closing )
+
+
+};
+
+box.hasBalancePoint = function hasBalancePoint (x) {
+    // x is an array of numbers. return whether there is an index where the sum
+    // before (excluding) it is equal to the sum after (including) it.
+
+
+};
+
+box.primeFactors = function primeFactors(x) {
+    // x is an integer
+    // return an array of all its prime factors
+    // Example: if x=12 then return [2,2,3]
+
+
+};

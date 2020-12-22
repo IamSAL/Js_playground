@@ -33,6 +33,8 @@ class BinarySearchTree {
             }
         }
     }
+
+   
 }
 
 function BinarySearchTreeLCA(strArr) {
@@ -56,7 +58,30 @@ function BinarySearchTreeLCA(strArr) {
     return lowestCommonAncestor(bst.root,Number(strArr[1]),Number(strArr[2])).value;
 }
 
-console.log(BinarySearchTreeLCA(["[10,5,1,7,40,50]", "1", "7"]));
-//->5
+function getPostOrder(tree){
+    let str='';
+    function postOrderHelper(root) {
+        if (root !== null) {
+           postOrderHelper(root.left);
+           postOrderHelper(root.right);
+          str+=root.value;
+        }
+     }
+     postOrderHelper(tree.root)
+    return str;
+}
+
+function postOrder(strArr) {
+    let bst = new BinarySearchTree();
+    let tree = strArr.split('')
+    tree.forEach(item => {
+        bst.insert(item);
+    })
+    return getPostOrder(bst)
+
+}
+
+console.log(postOrder("ABCDEFG"));
+
 
 

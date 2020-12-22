@@ -83,19 +83,36 @@
     }
 
     .touchcontrol {
+        visibility: hidden;
+        top: 100px;
         position: absolute;
-        z-index: 999;
+        z-index: 99;
     }
 
+    *{
+    -webkit-user-select: none;
+}
     .touchcontrol div {
 
         margin-bottom: 41px;
         margin-left: 10px;
     }
+    @media only screen and (max-width: 868px) {
+
+        .touchcontrol{
+            visibility: visible;
+        }
+}
 
 </style>
 <body>
 
+<div class="coins">
+    Coins:0
+</div>
+<div class="live-score">
+
+</div>
 
 <div class="game">
 

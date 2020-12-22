@@ -1,6 +1,7 @@
 
 ubtn=document.getElementById('ubtn');
 ubtn.addEventListener('touchstart', e=>{
+    e.preventDefault();
     window.dispatchEvent(
         new KeyboardEvent("keydown", {
             key: "ArrowUp",
@@ -10,6 +11,7 @@ ubtn.addEventListener('touchstart', e=>{
 });
 
 ubtn.addEventListener('touchend', e=>{
+    e.preventDefault();
     window.dispatchEvent(
         new KeyboardEvent("keyup", {
             key: "ArrowUp",
@@ -21,6 +23,7 @@ ubtn.addEventListener('touchend', e=>{
 
 Rbtn=document.getElementById('rbtn');
 Rbtn.addEventListener('touchstart', e=>{
+    e.preventDefault();
     window.dispatchEvent(
         new KeyboardEvent("keydown", {
             key: "ArrowRight",
@@ -30,6 +33,7 @@ Rbtn.addEventListener('touchstart', e=>{
 });
 
 Rbtn.addEventListener('touchend', e=>{
+    e.preventDefault();
     window.dispatchEvent(
         new KeyboardEvent("keyup", {
             key: "ArrowRight",
@@ -41,6 +45,7 @@ Rbtn.addEventListener('touchend', e=>{
 
 Lbtn=document.getElementById('lbtn');
 Lbtn.addEventListener('touchstart', e=>{
+    e.preventDefault();
     console.log(e.target)
     window.dispatchEvent(
         new KeyboardEvent("keydown", {
@@ -51,6 +56,7 @@ Lbtn.addEventListener('touchstart', e=>{
 });
 
 Lbtn.addEventListener('touchend', e=>{
+    e.preventDefault();
     window.dispatchEvent(
         new KeyboardEvent("keyup", {
             key: "ArrowLeft",

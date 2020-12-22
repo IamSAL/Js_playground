@@ -30,7 +30,9 @@ class State{
     static start(level){
         return new State(level, level.startActors, "playing");
     }
-
+    static pause(level){
+        return new State(level, level.startActors, "paused");
+    }
     get player(){
         return this.actors.find(a=>a.type=="player");
     }
@@ -102,13 +104,33 @@ class Coin{
 Coin.prototype.size=new Vec(0.6,0.6);
 
 
+class Monster{
+    constructor(pos, speed, reset){
+        this.pos = pos;
+        this.speed = speed;
+        this.reset = reset;
+    }
+    get type(){return "Monster"}
+    static create(pos,ch){
+        if(ch==">"){
+            return new Monster(pos, new Vec(2,0));
+        }else if(ch=="^"){
+            return new Monster(pos, new Vec(0,2));
+        }else if(ch=="*"){
+            return new Monster(pos, new Vec(Math.random()*14,Math.random()*12));
+        }
+    }
+}
+
+Monster.prototype.size=new Vec(1,1);
+Player.prototype.collide=(state)=>{
+    return new State(state.level,state.actors, "playing");
+}
 const levelChars={
     ".":"empty","#":"wall","+":"lava",
     "@":Player,"o":Coin,
-    "=":Lava,"|":Lava,"v":Lava
+    "=":Lava,"|":Lava,"v":Lava,"^":Monster,">":Monster,"*":Monster
 }
-
-
 
 
 function elt(name,attrs,...children) {
@@ -134,7 +156,7 @@ class DOMDisplay{
     }
 }
 
-const scale=30;
+const scale=10;
 function drawGrid(level){
     return elt("table",{
         class: "background",
@@ -206,6 +228,24 @@ Level.prototype.touches=function(pos,size,type){
     return false;
 };
 
+Level.prototype.touchesTop=function(pos,size,type){
+    var xStart=Math.floor(pos.x);
+    var xEnd=Math.ceil(pos.x+size.x);
+    var yStart=Math.floor(pos.y);
+    var yEnd=Math.ceil(pos.y+size.y);
+    for(let y=yStart; y<yEnd; y++){
+        for(let x=xStart; x<xEnd; x++){
+            let isOutSide=x<0||x>=this.width||
+                y<0||y>=this.height;
+            let here=isOutSide ?"wall":this.rows[y][x];
+            console.log(here,type,"testt");
+            if(here==type) return true;
+        }
+    }
+    return false;
+};
+
+
 State.prototype.update=function(time,keys){
     let actors=this.actors.map(actor=>actor.update(time,this,keys));
 
@@ -237,9 +277,12 @@ Lava.prototype.collide=function (state) {
     return new State(state.level,state.actors, "lost");
 }
 
+let coinscore=document.querySelector('.coins')
+let coinsCollected=0;
 Coin.prototype.collide=function (state) {
     let filtered=state.actors.filter(a=>a!=this);
     let status=state.status;
+    coinscore.textContent=`Coins:${++coinsCollected}`;
     if(!filtered.some(a=>a.type=="coin"))status="won";
     return new State(state.level,filtered,status);
 }
@@ -255,6 +298,30 @@ Lava.prototype.update=function (time,state){
         return new Lava(this.pos,this.speed.times(-1))
     }
 };
+
+Monster.prototype.update=function (time,state){
+    let newPos=this.pos.plus(this.speed.times(time));
+    if(!state.level.touches(newPos,this.size,"wall")){
+        return new Monster(newPos,this.speed,this.reset);
+    }else if(this.reset){
+        //something wrong here for v
+        return new Monster(this.reset,this.speed,this.reset);
+    }else{
+        return new Monster(this.pos,this.speed.times(-1))
+    }
+};
+
+
+Monster.prototype.collide=function (state) {
+    console.log(`Touched ${this.type}`)
+    if (state.player.pos.y + state.player.size.y < this.pos.y + 0.5) {
+        let filtered = state.actors.filter(a => a != this);
+        return new State(state.level, filtered, state.status);
+    } else {
+        return new State(state.level, state.actors, "lost");
+    }
+}
+
 
 const wobbleSpeed=8, wobbleDist=0.07;
  Coin.prototype.update = function(time){
@@ -280,6 +347,7 @@ const wobbleSpeed=8, wobbleDist=0.07;
      if(!state.level.touches(movedX,this.size,"wall")){
          pos=movedX;
      }
+
      let ySpeed=this.speed.y+time*gravity;
      let movedY=pos.plus(new Vec(0,ySpeed*time))
      if(!state.level.touches(movedY,this.size,"wall")){
@@ -292,7 +360,7 @@ const wobbleSpeed=8, wobbleDist=0.07;
      return new Player(pos,new Vec(xSpeed,ySpeed));
  }
 
-function trackKeys(keys){
+function trackKeys(keys,option="add"){
      let down=Object.create(null);
      function track(event){
          if(keys.includes(event.key)){
@@ -300,12 +368,15 @@ function trackKeys(keys){
              event.preventDefault();
          }
      }
+     if(option=="remove"){
+         window.removeEventListener('keydown',track);
+         window.removeEventListener('keyup',track);
+         return down;
+     }
      window.addEventListener('keydown',track);
      window.addEventListener('keyup',track);
      return down;
 }
-
-const arrowKeys=trackKeys(["ArrowLeft","ArrowRight","ArrowUp"]);
 
 
 function runAnimation(frameFunc){
@@ -321,38 +392,80 @@ function runAnimation(frameFunc){
     requestAnimationFrame(frame);
 }
 
+let pause=false;
 function runLevel(level,Display){
+
+    const arrowKeys=trackKeys(["ArrowLeft","ArrowRight","ArrowUp"]);
+
     let display=new Display(document.querySelector('.game'),level);
+
     let state=State.start(level);
     let ending=1;
+
     return new Promise((resolve=>{
         runAnimation(time=>{
+            if(!pause){
             state=state.update(time,arrowKeys);
             display.syncState(state);
             if(state.status=="playing"){
                 return true;
-            }else if(ending>0){
+            }else if(state.status=="paused"){
+                console.log(state.status);
+                return false;
+            }
+            else if(ending>0){
                 ending-=time;
                 return true;
+
             }else{
+                trackKeys(["ArrowLeft","ArrowRight","ArrowUp"],"remove");
+
                 display.clear();
                 resolve(state.status);
                 return false;
             }
-        })
+        }})
     }))
 }
+window.addEventListener('keydown',e=>{
+   // e.preventDefault();
+    if(e.key=="Escape"){
+
+        pause=!pause;
+        console.log(pause);
+    }
+})
 
 async function runGame(plans,Display) {
+    let livescore=document.querySelector('.live-score');
+    let lives=3;
+
+
     for(let level=0;level<plans.length;) {
+        let[,oldScore]=coinscore.textContent.split(":");
+        livescore.textContent=`Lives:${lives}`;
+        console.log({lives});
         let status=await runLevel(new Level(plans[level]),Display);
-        if(status=="won") level++;
+        console.log(status);
+        if(status=="won") {
+            level++;
+        }else if(lives<=1){
+            coinsCollected=0;
+            coinscore.textContent=`Coins:${coinsCollected}`
+            level=0;
+            lives=3;
+        }else{
+            let[,currScore]=coinscore.textContent.split(":");
+            coinsCollected-=Math.abs(currScore-oldScore);
+            coinscore.textContent=`Coins:${coinsCollected}`
+            lives--;
+        }
     }
     let msg=document.createElement('div')
     msg.appendChild(document.createTextNode("You've won!"));
     msg.className="msg";
     document.body.appendChild(msg);
-    console.log('added')
+
 }
 
 

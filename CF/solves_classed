@@ -1,0 +1,108 @@
+
+1.
+return x*3;
+2.
+return parseInt(x);
+3.
+return (6*(x*x)).toFixed(4);
+4.
+return x%2==0?false:true;
+5.
+return Math.sqrt(x);
+6.
+return x.toString();
+
+7.x is a string that contains a number,return x as a number
+return parseFloat(x);
+
+
+13. x is a string. rearrange the string from the last to the first character
+return x.split("").reverse().join("");
+
+
+15.x is a string (representing a file name),return the file extension (everything after the last dot)
+
+  return x.substring(x.lastIndexOf('.')+1, x.length) || x;
+
+
+14.x is an array,return an array removing the first 3 elements on x
+
+let x=[1,2,3,4,5];
+x.shift()
+x.shift()
+x.shift()
+return x;
+
+16. x is radius of a sphere,return the volume of the sphere, round the result to 4 digits
+
+return roundToFour((4 / 3) * Math.PI * Math.pow(x, 3))
+
+ function roundToFour(num) {
+        return +(Math.round(num + "e+4")  + "e-4");
+    }
+
+
+8.x is the length of the cube's sides,return the surface area of the cube, round the result to 4 digits
+
+    return parseFloat(roundToFour(6*(x*x)));
+    function roundToFour(num) {
+        return +(Math.round(num + "e+4")  + "e-4");
+    }
+
+9.x is an arbitrarily nested, multidimensional array.return x flattened (all items in 1 dimension)
+
+    return flatten(x);
+    function flatten(arr) {
+        return arr.reduce(function (flat, toFlatten) {
+            return flat.concat(Array.isArray(toFlatten) ? flatten(toFlatten) : toFlatten);
+        }, []);
+    }
+
+10.x is an array of at least 2 unique elements
+ return the elements that are on odd positions in the array
+
+return x.filter(function(el, ind){
+    return ind % 2 === 0;
+});
+
+11.x is an array of numbers. Return elements on the array, where the value is equal to their index doubled.
+return x.filter(function(el, ind){
+    return el == ind*2;
+});
+
+
+13.longest string in array:
+
+let longest = x.reduce(function(a, b) {
+  return a.length > b.length ? a : b
+}, '');
+return longest;
+
+12.x is a date in 2019 as string (example: "06/30/2019")
+return the rank of the day in 2019 (i.e. "09/01/2019" translates to 244)
+
+
+    Date.prototype.isLeapYear = function() {
+        var year = this.getFullYear();
+        if((year & 3) != 0) return false;
+        return ((year % 100) != 0 || (year % 400) == 0);
+    };
+    let getDOY = function(x) {
+        let date=new Date(x);
+        var dayCount = [0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334];
+        var mn = date.getMonth();
+        var dn = date.getDate();
+        var dayOfYear = dayCount[mn] + dn;
+        if(mn > 1 && date.isLeapYear()) dayOfYear++;
+        return dayOfYear;
+    };
+    return getDOY(x);
+
+13.x is a string. Cut x in half and move the second half to the beginning,'1234' will become '3412', '12345' will become '34512'
+
+ return x.substr(x.length/2) + x.substr(0, x.length/2);
+
+while(document.getElementsByClassName('btn btn-link').length){
+
+document.getElementsByClassName('btn btn-link')[0].click()
+}

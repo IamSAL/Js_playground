@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>BlueJump</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.1/tailwind.min.css">
 </head>
 <style>
@@ -17,6 +17,9 @@
         border-spacing: 0;
     }
 
+*{
+    -webkit-user-select: none;
+}
     .background td {
         padding: 0;
     }
@@ -82,10 +85,16 @@
         width: 50px;
         border-radius: 50%;
     }
+    .Monster {
+        background: linear-gradient(red, yellow);
+        border-radius: 50%;
+    }
 
     .touchcontrol {
+        visibility: hidden;
+        top: 100px;
         position: absolute;
-        z-index: 999;
+        z-index: 99;
     }
 
     .touchcontrol div {
@@ -93,9 +102,31 @@
         margin-bottom: 41px;
         margin-left: 10px;
     }
+    
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 880px) and (orientation: landscape) {
+    /* insert styles here */
+    .touchcontrol{
+    visibility: visible !important;
+}
+}
+ 
+    /* @media only screen and (max-width: 768px) {
+
+.touchcontrol{
+    visibility: visible !important;
+}
+} */
+
 
 </style>
 <body>
+<div class="coins">
+Coins :0
+</div>
+<div class="live-score">
+
+</div>
 <div class="touchcontrol">
     <div id="ubtn" class="touchBTN" style="display:block;">
         ^
@@ -118,6 +149,7 @@
 <script src="touchControl.js"></script>
 <script src="game.js"></script>
 <script>
+  
     runGame(GAME_LEVELS, DOMDisplay);
 </script>
 </body>
