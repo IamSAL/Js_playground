@@ -381,7 +381,7 @@ async function runGame(plans,Display) {
 
     for(let level=0;level<plans.length;) {
         let[,oldScore]=coinscore.textContent.split(":");
-        livescore.textContent=`TEST:${lives}`;
+        livescore.textContent=`❤️:${lives}`;
         console.log({lives});
         let status=await runLevel(new Level(plans[level]),Display);
         console.log(status);

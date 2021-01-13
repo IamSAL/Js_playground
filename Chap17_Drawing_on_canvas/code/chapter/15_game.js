@@ -239,25 +239,18 @@ Coin.prototype.act = function(step) {
   var wobblePos = Math.sin(this.wobble) * wobbleDist;
   this.pos = this.basePos.plus(new Vector(0, wobblePos));
 };
-// window.addEventListener("keydown",(e)=>{
-//   if((e.key="ArrowRight" || e.key=="ArrowLeft") && ()){
-//     walkSound.play();
-//   }
-//   setTimeout(()=>{
-//     walkSound.pause();
-//   },300)
-// })
+
 var playerXSpeed = 7;
 walkSound.volume=0.2
 Player.prototype.moveX = function(step, level, keys) {
   
   this.speed.x = 0;
   if (keys.left){
-    
+    walkSound.play()
     this.speed.x -= playerXSpeed;
   } 
   if (keys.right) {
-    
+    walkSound.play()
     this.speed.x += playerXSpeed;
   }
 

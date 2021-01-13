@@ -1,6 +1,26 @@
 <!doctype html>
 
 <style>
+    .touchBTN {
+        display: inline;
+        padding: 30px;
+        background-color: orange;
+        width: 50px;
+        border-radius: 50%;
+    }
+   .touchcontrol {
+        visibility: hidden;;
+        top: 100px;
+        position: absolute;
+        z-index: 99;
+    }
+
+    .touchcontrol div {
+
+        margin-bottom: 41px;
+        margin-left: 10px;
+    }
+    
   body{
     margin: unset;
     overflow: hidden;
@@ -31,8 +51,26 @@
     margin-top: 5%;
     height: 50%;
   }
+  @media only screen and (min-device-width: 320px) and (max-device-width: 880px) and (orientation: landscape) {
+    /* insert styles here */
+    .touchcontrol{
+    visibility: visible !important;
+}
+}
 </style>
 <body>
+  <div class="touchcontrol">
+    <div id="ubtn" class="touchBTN" style="display:block;">
+        ^
+    </div>
+    <div id="lbtn" class="touchBTN">
+        
+    </div>
+    <div id="rbtn" class="touchBTN">
+        
+    </div>
+
+</div>
 
   <div class="winGif">
     <img src="./img/wohoo.gif" alt="">
@@ -46,6 +84,7 @@
     <script src="code/chapter/15_game.js"></script>
 <script src="code/game_levels.js"></script>
 <script src="code/chapter/16_canvas.js"></script>
+<script src="../Chap16_Platform_Game/touchControl.js"></script>
   <script>
     runGame(GAME_LEVELS, CanvasDisplay);
   </script>
