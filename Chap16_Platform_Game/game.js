@@ -26,6 +26,7 @@ class State{
         this.actors=actors;
         this.status=status;
     }
+    
 
     static start(level){
         return new State(level, level.startActors, "playing");
@@ -104,33 +105,13 @@ class Coin{
 Coin.prototype.size=new Vec(0.6,0.6);
 
 
-class Monster{
-    constructor(pos, speed, reset){
-        this.pos = pos;
-        this.speed = speed;
-        this.reset = reset;
-    }
-    get type(){return "Monster"}
-    static create(pos,ch){
-        if(ch==">"){
-            return new Monster(pos, new Vec(2,0));
-        }else if(ch=="^"){
-            return new Monster(pos, new Vec(0,2));
-        }else if(ch=="*"){
-            return new Monster(pos, new Vec(Math.random()*14,Math.random()*12));
-        }
-    }
-}
-
-Monster.prototype.size=new Vec(1,1);
-Player.prototype.collide=(state)=>{
-    return new State(state.level,state.actors, "playing");
-}
 const levelChars={
     ".":"empty","#":"wall","+":"lava",
     "@":Player,"o":Coin,
-    "=":Lava,"|":Lava,"v":Lava,"^":Monster,">":Monster,"*":Monster
+    "=":Lava,"|":Lava,"v":Lava
 }
+
+
 
 
 function elt(name,attrs,...children) {
@@ -228,24 +209,6 @@ Level.prototype.touches=function(pos,size,type){
     return false;
 };
 
-Level.prototype.touchesTop=function(pos,size,type){
-    var xStart=Math.floor(pos.x);
-    var xEnd=Math.ceil(pos.x+size.x);
-    var yStart=Math.floor(pos.y);
-    var yEnd=Math.ceil(pos.y+size.y);
-    for(let y=yStart; y<yEnd; y++){
-        for(let x=xStart; x<xEnd; x++){
-            let isOutSide=x<0||x>=this.width||
-                y<0||y>=this.height;
-            let here=isOutSide ?"wall":this.rows[y][x];
-            console.log(here,type,"testt");
-            if(here==type) return true;
-        }
-    }
-    return false;
-};
-
-
 State.prototype.update=function(time,keys){
     let actors=this.actors.map(actor=>actor.update(time,this,keys));
 
@@ -299,30 +262,6 @@ Lava.prototype.update=function (time,state){
     }
 };
 
-Monster.prototype.update=function (time,state){
-    let newPos=this.pos.plus(this.speed.times(time));
-    if(!state.level.touches(newPos,this.size,"wall")){
-        return new Monster(newPos,this.speed,this.reset);
-    }else if(this.reset){
-        //something wrong here for v
-        return new Monster(this.reset,this.speed,this.reset);
-    }else{
-        return new Monster(this.pos,this.speed.times(-1))
-    }
-};
-
-
-Monster.prototype.collide=function (state) {
-    console.log(`Touched ${this.type}`)
-    if (state.player.pos.y + state.player.size.y < this.pos.y + 0.5) {
-        let filtered = state.actors.filter(a => a != this);
-        return new State(state.level, filtered, state.status);
-    } else {
-        return new State(state.level, state.actors, "lost");
-    }
-}
-
-
 const wobbleSpeed=8, wobbleDist=0.07;
  Coin.prototype.update = function(time){
      let wobble=this.wobble+time*wobbleSpeed;
@@ -347,7 +286,6 @@ const wobbleSpeed=8, wobbleDist=0.07;
      if(!state.level.touches(movedX,this.size,"wall")){
          pos=movedX;
      }
-
      let ySpeed=this.speed.y+time*gravity;
      let movedY=pos.plus(new Vec(0,ySpeed*time))
      if(!state.level.touches(movedY,this.size,"wall")){
@@ -443,7 +381,7 @@ async function runGame(plans,Display) {
 
     for(let level=0;level<plans.length;) {
         let[,oldScore]=coinscore.textContent.split(":");
-        livescore.textContent=`Lives:${lives}`;
+        livescore.textContent=`TEST:${lives}`;
         console.log({lives});
         let status=await runLevel(new Level(plans[level]),Display);
         console.log(status);

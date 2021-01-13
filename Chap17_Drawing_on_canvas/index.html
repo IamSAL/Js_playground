@@ -1,0 +1,52 @@
+<!doctype html>
+
+<style>
+  body{
+    margin: unset;
+    overflow: hidden;
+    background-image: url('./img/mainBG.jpg');
+    background-size: cover;
+    
+    /* background-color: rgb(52, 166, 251); */
+  }
+  .coins{
+    color:gold;
+    text-shadow: black 2px 1px;
+    position:absolute;
+    left: 2%;
+    font-size: 2em;
+    top: 1%;
+  }
+  .live-score{
+    text-shadow: black 2px 1px;
+    position:absolute;
+    right: 2%;
+    font-size: 2em;
+    top: 1%;
+  }
+  .winGif img{
+    display: none;
+    margin-left: 25%;
+    width: 50%;
+    margin-top: 5%;
+    height: 50%;
+  }
+</style>
+<body>
+
+  <div class="winGif">
+    <img src="./img/wohoo.gif" alt="">
+  </div>
+  <div class="coins">
+    💰 X0
+    </div>
+    <div class="live-score">
+    
+    </div>
+    <script src="code/chapter/15_game.js"></script>
+<script src="code/game_levels.js"></script>
+<script src="code/chapter/16_canvas.js"></script>
+  <script>
+    runGame(GAME_LEVELS, CanvasDisplay);
+  </script>
+</body>
