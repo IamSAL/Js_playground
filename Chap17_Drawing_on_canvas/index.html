@@ -1,17 +1,83 @@
 <!doctype html>
 
 <style>
+  .fs:hover,.info:hover{
+   
+    transform: scale(0.9);
+  }
+
+  *{
+    user-select: none;
+    touch-action: manipulation;
+  }
+   
+   .fs{ 
+     /* padding: 70px !important; */
+        transition: 0.0s;
+        position: absolute;
+        right: 20%;
+        z-index: 999;
+        padding: 25px;
+        
+        top:1%;
+        background-image: url('./img/fs.png');
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+  }
+  .info{ 
+        transition: 0.2s;
+     /* padding: 70px !important; */
+        position: absolute;
+        right: 27%;
+        z-index: 999;
+        padding: 25px;
+        top:1%;
+        background-image: url('./img/info.png');
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+  }
+ 
+  .up{ 
+     /* padding: 70px !important; */
+       
+        right: 1%;
+        background-image: url('./img/up.png');
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+  }
+  .left{
+        
+        left: 1%;
+        background-image: url('./img/left.png');
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+  }
+  .right{
+       
+        left: 13%;
+        background-image: url('./img/right.png');
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+  }
+  
     .touchBTN {
-        display: inline;
-        padding: 30px;
-        background-color: orange;
+      
+        position:absolute;
+        bottom: -9%;
+        transition: 0.07s;
+        display: block;
+        padding: 37px;
         width: 50px;
         border-radius: 50%;
     }
    .touchcontrol {
         visibility: hidden;;
-        top: 100px;
-        position: absolute;
+       
         z-index: 99;
     }
 
@@ -20,6 +86,7 @@
         margin-bottom: 41px;
         margin-left: 10px;
     }
+
     
   body{
     margin: unset;
@@ -51,41 +118,184 @@
     margin-top: 5%;
     height: 50%;
   }
+  .fsGif{
+    display: none;
+  }
+  .fsGif .txt{
+    position: absolute;
+    margin-left: 21%;
+    width: 50%;
+    margin-top: 2%;
+    height: 50%;
+  }
+  .fsGif .arrow{
+    z-index: 99999;
+    position: absolute;
+    transform: rotate(150deg);
+    right: 20%;
+    top: 12%;
+    /* margin-left: 25%; */
+    /* width: 20%; */
+    margin-top: 2%;
+    /* height: 50%; */
+  }
+  .rotate{
+    display: none;
+    z-index: 9999999999999;
+    padding: 0px;
+  }
+  .rotate img{
+   width: 100vw;
+   height: 100vh !important;
+   
+  }
+
   @media only screen and (min-device-width: 320px) and (max-device-width: 880px) and (orientation: landscape) {
     /* insert styles here */
     .touchcontrol{
     visibility: visible !important;
 }
+.fsGif{
+    display: block;
+  }
+  .arrow{
+   display: block;
+ }
+ .info,.fs,.coins,.live-score{
+   display: block;
+ }
+ 
 }
+@media only screen and (min-device-width: 320px) and (max-device-width: 880px) and (orientation: portrait) {
+  .rotate{
+    display: block;
+  }
+ .arrow{
+   display: none;
+ }
+ .info,.fs,.coins,.live-score{
+   display: none;
+ }
+}
+
+
 </style>
 <body>
+  <div class="rotate">
+    <img src="./img/rotate.gif" alt="">
+  </div>
   <div class="touchcontrol">
-    <div id="ubtn" class="touchBTN" style="display:block;">
-        ^
+    <div id="ubtn" class="touchBTN up" >
+    
     </div>
-    <div id="lbtn" class="touchBTN">
+    <div id="lbtn" class="touchBTN left">
         
     </div>
-    <div id="rbtn" class="touchBTN">
+    <div id="rbtn" class="touchBTN right" >
         
     </div>
 
 </div>
+<div class="info">
 
+</div>
+  <div class="fs">
+
+  </div>
   <div class="winGif">
     <img src="./img/wohoo.gif" alt="">
+  </div>
+  <div class="fsGif ">
+    <img class="txt" src="./img/fsGif.svg" alt="">
+    <img src="./img/arrow.gif" alt="" class="arrow">
   </div>
   <div class="coins">
     💰 X0
     </div>
     <div class="live-score">
-    
+      ❤️❤️❤️
     </div>
+  
     <script src="code/chapter/15_game.js"></script>
 <script src="code/game_levels.js"></script>
 <script src="code/chapter/16_canvas.js"></script>
 <script src="../Chap16_Platform_Game/touchControl.js"></script>
   <script>
-    runGame(GAME_LEVELS, CanvasDisplay);
+
+var elem = document.documentElement;
+function openFullscreen() {
+  if (elem.requestFullscreen) {
+    elem.requestFullscreen();
+  } else if (elem.webkitRequestFullscreen) { /* Safari */
+    elem.webkitRequestFullscreen();
+  } else if (elem.msRequestFullscreen) { /* IE11 */
+    elem.msRequestFullscreen();
+  }
+}
+
+function closeFullscreen() {
+  if (document.exitFullscreen) {
+    document.exitFullscreen();
+  } else if (document.webkitExitFullscreen) { /* Safari */
+    document.webkitExitFullscreen();
+  } else if (document.msExitFullscreen) { /* IE11 */
+    document.msExitFullscreen();
+  }
+}
+document.querySelector('.fs').addEventListener("click",(e)=>{
+  if(!fs){
+    openFullscreen()
+    if(isMobile){
+      document.querySelector('.fsGif').style.display="none";
+      runGame(GAME_LEVELS, CanvasDisplay);
+    }
+    fs=!fs;
+  }else{
+    closeFullscreen()
+    fs=!fs
+  }
+  
+})
+
+if(!isMobile()){
+  runGame(GAME_LEVELS, CanvasDisplay);
+}else{
+  document.querySelector('.fsGif').style.display="block";
+}
+let fs=false;
+
+
+
+
+window.addEventListener("orientationchange", function(event) {
+  let orientation = (screen.orientation || {}).type || screen.mozOrientation || screen.msOrientation;
+  console.log("the orientation of the device is now " + event.target.screen.orientation.angle +' '+orientation);
+  
+if (orientation === "landscape-primary") {
+  console.log("That looks good.");
+} else if (orientation === "landscape-secondary") {
+  console.log("Mmmh... the screen is upside down!");
+} else if (orientation === "portrait-secondary" || orientation === "portrait-primary") {
+  console.log("Mmmh... you should rotate your device to landscape");
+} else if (orientation === undefined) {
+  console.log("The orientation API isn't supported in this browser :(");
+}
+
+});
+
+
+
+
+function isMobile(){
+        if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+            return true
+       }
+       else{
+            return false
+       }
+    } 
+
+
+    // runGame(GAME_LEVELS, CanvasDisplay);
   </script>
 </body>
