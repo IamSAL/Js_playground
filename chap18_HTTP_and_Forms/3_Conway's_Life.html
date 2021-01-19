@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Conway's Life</title>
+    <style>
+      body {
+        overflow: hidden;
+      }
+      input[type="checkbox"] {
+        margin: 1px;
+        padding: unset;
+      }
+      .grid {
+        height: 95vh;
+        width: 100vw;
+
+        overflow: auto;
+      }
+      .controls {
+        margin-left: 44%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="grid"></div>
+    <div class="controls">
+      <!-- <input type="number" placeholder="height" id="h" value="35" />
+      <input type="number" id="w" placeholder="Width" value="90" /> -->
+      <button id="generate">Shuffle</button>
+      <button id="next">Next</button>
+      <button id="auto">Auto Run</button>
+    </div>
+
+    <script>
+      //First Generation and controls
+      let grid = [];
+      let height = 35;
+      let length = 90;
+      let gridElement = document.querySelector(".grid");
+
+      let GenBtn = document.querySelector("#generate");
+      let nextBtn = document.querySelector("#next");
+      let autoBtn = document.querySelector("#auto");
+
+      // let neighborList={}
+      let currentGrid=grid;
+
+      let createRow = (length) => {
+        let row = [];
+        for (let i = 1; i <= length; i++) {
+          row.push(Math.round(Math.random()-0.15));
+        }
+        grid.push(row);
+      };
+
+      function createGridElement(grid) {
+        grid.forEach((row,rowInd) => {
+          let div = document.createElement("div");
+          row.forEach((item,index) => {
+            let cb = document.createElement("input");
+            cb.setAttribute("data--index",index);
+            cb.setAttribute("data--val",item);
+            // if(Object.keys(neighborList).length>0){
+            //   cb.setAttribute("data--neighbors",neighborList[rowInd][index].liveNeighbors);
+            // }
+            cb.type = "checkbox";
+            if (item == 1) {
+              cb.checked = true;
+            }
+            div.appendChild(cb);
+          });
+
+          gridElement.appendChild(div);
+        });
+      }
+
+      let createGrid = () => {
+        height = 35;
+        length = 90;
+        while (height > 0) {
+          createRow(length);
+          height--;
+        }
+
+        createGridElement(grid);
+        console.clear();
+        console.log(JSON.stringify(grid));
+      };
+
+      createGrid();
+
+      let intervals=0;
+      let singleTurnRandom=()=>{
+        intervals++;
+        grid = [];
+        gridElement.innerHTML = "";
+        createGrid();
+        currentGrid=grid;
+      }
+
+      let singleTurnControlled=(currentGrid)=>{
+        intervals++;
+        gridElement.innerHTML = "";
+        createGridElement(currentGrid);
+        //currentGrid=getNextGrid(currentGrid);
+      }
+
+      GenBtn.addEventListener("click", () => {
+        
+        singleTurnRandom();
+      });
+
+    let running=false;
+    
+     autoBtn.addEventListener("click", () => {
+      if(running){
+        for (let i = 1; i < intervals; i++){
+          window.clearInterval(i);
+        }
+        
+        autoBtn.textContent="Auto Run"
+        running=false;
+      }else{
+        setInterval(()=>{
+          nextBtn.click();
+        },300)
+        running=true;
+        autoBtn.textContent="Stop"
+      }
+     
+      });
+
+      //game turns
+     
+
+      function getNextGrid(grid){
+        let turnedGrid=grid.map((row,rowIndex)=>{
+         
+        return row.map((box,boxIndex)=>{
+          let up=0,down=[],side=[]
+          
+          //UP
+          for(let i=boxIndex-1;i<=boxIndex+1;i++){
+              if(grid[rowIndex-1]!=undefined && [rowIndex-1][i]==1){
+                up++;
+              }
+            }
+            //down
+            for(let i=boxIndex-1;i<=boxIndex+1;i++){
+              if(grid[rowIndex+1]!=undefined && grid[rowIndex+1][i]==1){
+                down++;
+              }
+            }
+            //sides
+            if(row[rowIndex+1]==1){
+              side++;
+            }
+            if(row[rowIndex-1]==1){
+              side++;
+            }
+
+          let liveNeighbors=Number (up+down+side);
+          
+          // neighborList[rowIndex].push({boxIndex,liveNeighbors})
+         
+
+          if(box==1){
+          //for live cell,alive if exactly 2 or 3 live neighbors 
+              if(liveNeighbors==2||liveNeighbors==3){
+                return 1;
+              }else{
+                return 0;
+              }
+
+          }else if(box==0){
+              //for dead cell,alive if 3 live neighbors 
+            if(liveNeighbors==3){
+                return 1;
+              }else{
+                return 0;
+              }
+          }else{
+            return 0;
+          }
+          
+        })
+      })
+
+      return turnedGrid;
+      }
+      
+      nextBtn.addEventListener("click",()=>{
+       currentGrid=getNextGrid(currentGrid)
+       singleTurnControlled(currentGrid);
+      })
+
+     
+
+
+
+    </script>
+  </body>
+</html>

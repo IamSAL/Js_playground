@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bouncing ball</title>
+    <style>
+        body{
+            margin: unset;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="shapes">
+
+    </canvas>
+    
+    <script>
+
+        let canvas=document.querySelector('#shapes');
+        canvas.height=window.innerHeight;
+        canvas.width=window.innerWidth;
+        let context=canvas.getContext("2d");
+
+        context.lineWidth=2;
+        context.strokeStyle="black";
+        context.fillStyle="red";
+
+       
+    </script>
+</body>
+</html>

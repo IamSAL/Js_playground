@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS Workbench</title>
+  <style></style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css" integrity="sha512-EZLkOqwILORob+p0BXZc+Vm3RgJBOe1Iq/0fiI7r/wJgzOFZMlsqTa29UEl6v6U6gsV4uIpsNZoV32YZqrCRCQ==" crossorigin="anonymous" />
+</head>
+
+<body>
+  <h5 class="u-full-width" style="text-align: center; background-color: #222;padding: 10px; color: white;">Type JS and Run:</h5>
+  <div class="container">
+    <div class="row">
+      <div class="eight columns">
+
+        <div id="editor"> var x = "All things js!"; console.log(x); </div>
+      </div>
+      <div class="four columns">
+        <button style="display:block; background-color:#222;  margin-top: 5px; margin-left: 10px;" class="u-full-width button-primary" id="run">Run</button>
+        
+        <div id="out"></div>
+ <button onclick="clearConsole()" id="clear" class="u-full-width button-primary">Clear</button>
+      </div>
+    </div>
+  </div>
+  <script src="https://pagecdn.io/lib/ace/1.4.5/ace.js" integrity="sha256-5Xkhn3k/1rbXB+Q/DX/2RuAtaB4dRRyQvMs83prFjpM=" crossorigin="anonymous"></script>
+
+</body>
+
+</html>

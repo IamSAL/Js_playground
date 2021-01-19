@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bouncing ball</title>
+    <style>
+        body{
+            margin: unset;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="shapes">
+
+    </canvas>
+    
+    <script>
+
+        let canvas=document.querySelector('#shapes');
+        canvas.height=window.innerHeight;
+        canvas.width=window.innerWidth;
+        let context=canvas.getContext("2d");
+
+        context.lineWidth=2;
+        context.strokeStyle="black";
+        context.fillStyle="red";
+
+        
+       
+        let x=300;
+        let y=80;
+        let rightSide=false;
+        let bottomSide=true;  
+        let speed=2;
+        function updatedXY(){
+           
+                if (rightSide==false){
+                    x+=Math.abs(Math.cos(x)*speed+3);
+                    if(x>900){
+                     rightSide=true;
+                    }
+                }else if (rightSide==true){        
+                    x-=Math.abs(Math.cos(x)*speed+3);
+                    console.log("called reduce",Math.cos(x)*4+3)
+                    if(x<300){
+                     rightSide=false
+                    }
+                }
+
+               
+                if (bottomSide==false){
+                    y+=Math.abs(Math.sin(y)*speed+3);
+                    if(y>480){
+                     bottomSide=true;
+                    }
+                }else if (bottomSide==true){        
+                    y-=Math.abs(Math.sin(y)*speed+3);
+                    if(y<80){
+                     bottomSide=false
+                    }
+                }
+                    
+                console.log({rightSide,bottomSide,x,y})
+                context.clearRect(0, 0, canvas.width, canvas.height);   
+        }
+
+        let updatedBallPosition=(time)=>{
+                updatedXY()
+                 
+                context.strokeRect(300,80,700,500); 
+                context.beginPath();       
+                context.arc(x+50,y+50,50,0,2 * Math.PI,false);
+                context.fill()
+                //context.strokeRect(x,y,100,100)
+               
+               
+                requestAnimationFrame(updatedBallPosition)     
+        }
+        
+        requestAnimationFrame(updatedBallPosition);
+
+    </script>
+</body>
+</html>

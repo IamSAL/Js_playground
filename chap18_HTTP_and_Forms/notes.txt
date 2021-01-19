@@ -1,0 +1,6 @@
+Calling fetch returns a promise that resolves to a Response object holding
+information about the server’s response, such as its status code and its headers.
+The headers are wrapped in a Map-like object that treats its keys (the
+header names) as case insensitive because header names are not supposed to
+be case sensitive. This means headers.get("Content-Type") and headers.get
+("content-TYPE") will return the same value.

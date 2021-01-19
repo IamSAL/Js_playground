@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content Negotiation</title>
+</head>
+<body>
+    <button onclick="reqHTML()">HTML</button>
+    <button onclick="reqTXT()">Plain Text</button>
+    <button onclick="reqJSON()">JSON</button>
+    <button onclick="reqRand()">Rand</button>
+
+
+
+
+
+<script>
+    function reqHTML(){
+        fetch("https://eloquentjavascript.net/author",{
+            headers:{"Accept":"text/html"}
+        }).then(res=>res.text()).then(body=>{
+            console.log(body)
+            document.body.innerHTML+=body
+        });
+    }
+
+    function reqTXT(){
+        fetch("https://eloquentjavascript.net/author",{
+            headers:{"Accept":"text/plain"}
+        }).then(res=>res.text()).then(body=>{
+            console.log(body)
+            document.body.innerHTML+=body
+        });
+    }
+    function reqJSON(){
+        fetch("https://eloquentjavascript.net/author",{
+            headers:{"Accept":"application/json"}
+        }).then(res=>res.json()).then(body=>{
+            console.log(body)
+            document.body.innerHTML+=JSON.stringify(body)
+        });
+    }
+    function reqRand(){
+        fetch("https://eloquentjavascript.net/author",{
+            headers:{"Accept":"pplication/rainbows+unicorns"}
+        }).then(handleErrors).then(body=>{
+            console.log(body)
+            document.body.innerHTML+=JSON.stringify(body)
+        }).catch(err=>{
+            document.body.innerHTML+=err;
+        })
+    }
+
+    function handleErrors(response) {
+    if (!response.ok) {
+        throw Error(response.status);
+    }
+    return response;
+}
+    
+</script>
+</body>
+</html>

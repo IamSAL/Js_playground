@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTTP</title>
+</head>
+<style>
+  body{
+    margin-bottom: 100px;
+  }
+</style>
+<body>
+
+  Choose color:
+  <br>
+
+
+  <input type="radio" name="color" id="purple" value="purple">
+  <label for="purple">Purple</label>
+  <input type="radio" name="color" id="orange" value="orange">
+  <label for="orange">orange</label>
+  <input type="radio" name="color" id="cyan" value="cyan">
+  <label for="cyan">cyan</label>
+
+  <p>Choose More Colors:</p>
+  <select name="moreColors" id="moreColors" multiple>
+    <option >Red</option>
+    <option >Green</option>
+    <option >Blue</option>
+  </select>
+  
+
+  <script>
+
+    document.querySelector('#moreColors').addEventListener("change",(e)=>{
+      document.body.style.backgroundColor=e.target.value
+    })
+
+
+    let colors=document.querySelectorAll('[name=color]');
+    // setInterval(()=>{
+    //   let ind=Math.random()*2;
+    //   document.body.style.backgroundColor=colors[Math.round(ind)].value
+    // },1000)
+    colors.forEach(element => {
+      element.addEventListener("change",(e)=>{
+        document.body.style.backgroundColor=element.value;
+    })
+    })
+  </script>
+
+
+    <h3>Notes:</h3>
+    <select name="" id="noteNames"></select>
+    <button>Add</button> <br>
+    <textarea style="width: 100%; " rows="15"></textarea>
+
+    <script>
+      let list=document.querySelector("#noteNames");
+      let note=document.querySelector("textarea");
+
+      let state;
+      function setState(newState){
+        list.textContent="";
+        for(let name of Object.keys(newState.notes)){
+          let option=document.createElement("option");
+          option.textContent=name;
+          if(newState.selected==name) option.selected=true;
+          list.appendChild(option);
+        }
+        note.value=newState.notes[newState.selected];
+
+        localStorage.setItem("Notes",JSON.stringify(newState));
+        state=newState;
+      }
+      setState(JSON.parse(localStorage.getItem("Notes"))||{
+        notes:{"shopping list": "Carrots\nRaisins","Todos":"Complete chapter\nPrayer for duhr"},
+        selected:"shopping list"
+      });
+      list.addEventListener("change",()=>{
+        setState({notes:state.notes,selected:list.value});
+      });
+
+      note.addEventListener("change",()=>{
+        setState({
+          notes:Object.assign({},state.notes,{[state.selected]:note.value}),
+          selected:state.selected
+      })
+    });
+    document.querySelector("button")
+    .addEventListener("click",()=>{
+      let name=prompt("Note name");
+      if(name) setState({
+        notes:Object.assign({},state.notes,{[name]:""}),
+        selected:name
+      })
+    })
+
+      
+    </script>
+
+<div style="margin: 20px;">
+    Replace word: <input type="text" id="toReplace" placeholder="The word to replace"> <input type="text" id="replaceBy" placeholder="The word to replace by">
+</div>
+<textarea name="textEditor" id="textEditor" style="width: 100%;" rows="10"></textarea>
+
+<script>
+  
+  let textEditor=document.getElementById('textEditor')
+
+  textEditor.addEventListener('select',(e)=>{
+    let fromWord=document.getElementById('toReplace').value;
+    let toWord=document.getElementById('replaceBy').value;
+    let from=textEditor.selectionStart;
+    let to=textEditor.selectionEnd;
+    let selectedWord=textEditor.value.slice(from,to);
+    //console.log(selectedWord,fromWord);
+    if(selectedWord==fromWord){
+      textEditor.value=textEditor.value.slice(0,from)+' '+toWord+' '+textEditor.value.slice(to,textEditor.value.length);
+    }
+    textEditor.selectionStart=to;
+    textEditor.selectionEnd=to;
+  })
+ 
+</script>
+
+<div>
+  Select a text file to see its details:
+  <input type="file" id="file" multiple>
+  <div class="fileDetails">
+    
+  </div>
+</div>
+
+
+<script>
+let fileInput=document.getElementById('file');
+let details=document.querySelector('.fileDetails');
+fileInput.addEventListener("change",async (e)=>{
+  // console.log(fileInput.files);
+
+  for(let file of fileInput.files){
+    console.log(file.name)
+    let content=await readText(file)
+    details.innerHTML= details.innerHTML+
+    `<h2 class="fileName">${file.name}</h2>
+    <div class="size">Size:${(file.size/1024)/1024} MB</div>
+    <div class="size">fileType:${file.type}</div>
+    <div class="lastModified">Last Modified:${file.lastModifiedDate}</div>
+    <div class="lastModified">Content startsWith: ${content.slice(0,200)+'...'}</div>
+    `
+    
+  }
+})
+
+
+function readText(file){
+  return new Promise((resolve,reject)=>{
+    let reader=new FileReader();
+    reader.addEventListener("load",()=>{
+      resolve(reader.result);
+    })
+    reader.addEventListener("error",()=>{
+      reject(reader.error)
+    })
+    reader.readAsText(file);
+  })
+}
+
+
+</script>
+
+    <script>
+
+      fetch("./notes.txt",{method:"GET",headers:{Range:"bytes=20-200",'content-type': 'application/json'}}).then(res=>{
+        console.log(res.status)
+        console.log(res.headers.get("Content-Length"))
+        console.log(res.headers.get("Content-Type"))
+       
+        return res.text()
+      }).then(data=>{
+        console.log("Fethed:",data)
+      })
+      
+    </script>
+</body>
+</html>

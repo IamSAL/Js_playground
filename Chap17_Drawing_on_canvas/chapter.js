@@ -1,24 +1,24 @@
-// let canvas=document.querySelector("canvas");
-// let context=canvas.getContext("2d");
+let canvas=document.querySelector("canvas");
+let context=canvas.getContext("2d");
 
-// canvas.setAttribute("width",(window.innerWidth > 0) ? window.innerWidth : screen.width);
-// canvas.setAttribute("height",(window.innerHeight > 0) ? window.innerHeight : screen.height);
-// //rectangle
-// context.fillStyle=getRandomColor();
-// // context.fillRect(5,5,110,50);
+canvas.setAttribute("width",(window.innerWidth > 0) ? window.innerWidth : screen.width);
+canvas.setAttribute("height",(window.innerHeight > 0) ? window.innerHeight : screen.height);
+//rectangle
+context.fillStyle=getRandomColor();
+// context.fillRect(5,5,110,50);
 
-// //stroke
-// // context.strokeStyle="blue"
-// context.lineWidth=Math.random()+1;
-// // context.strokeRect(5,5,110,50)
+//stroke
+// context.strokeStyle="blue"
+context.lineWidth=Math.random()+1;
+// context.strokeRect(5,5,110,50)
 
-// //empty rect with only stroke
-// context.strokeStyle=getRandomColor();
-// // context.lineWidth=0.5;
-// // context.strokeRect(150,5,110,50)
-// // context.stroke();
-// //Paths
-// //window.addEventListener("mousemove",DrawBG);
+//empty rect with only stroke
+context.strokeStyle=getRandomColor();
+// context.lineWidth=0.5;
+// context.strokeRect(150,5,110,50)
+// context.stroke();
+//Paths
+//window.addEventListener("mousemove",DrawBG);
 
 function DrawBG(scale=20){ 
     
@@ -140,7 +140,7 @@ function pieChart(data,cx,cy,r){
     let currentAngle=-0.5*Math.PI;
     for(let result of data){
         context.font="28px Montserrat";
-        context.fillStyle="fuchsia";
+        context.fillStyle=result.color;
         context.fillText(result.name,cx,cy);
         let sliceAngle=(result.count / total) * 2 * Math.PI;
         context.beginPath();
@@ -205,7 +205,7 @@ function flipHorizontally(context,around){
 // drawPlayer(500,100,undefined,2,false);
 // flipHorizontally(context,600)
 // context.resetTransform()
-//context.fillRect(100,100,300,400)
+// context.fillRect(100,100,300,400)
 
 function branch(length,angle,scale){
     context.fillRect(0,0,1,length);
@@ -224,16 +224,16 @@ function branch(length,angle,scale){
     context.restore();
 }
 
-//testing branch
-// context.save()
-// context.translate(canvas.width/2,canvas.height)
-// context.rotate(3.2)
-// context.scale(1.45,1.45)
 
-// branch(100,0.5,0.8)
+context.save()
+context.translate(canvas.width/2,canvas.height)
+context.rotate(3.2)
+context.scale(1.45,1.45)
+
+branch(100,0.5,0.8)
 
 
-// context.restore()
+context.restore()
 
 
 

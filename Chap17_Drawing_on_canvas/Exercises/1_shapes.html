@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1_Shapes</title>
+    <style>
+        body{
+            margin: unset;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="shapes">
+
+    </canvas>
+
+    <script>
+        let canvas=document.querySelector('#shapes');
+        canvas.height=window.innerHeight;
+        canvas.width=window.innerWidth;
+        let cx=canvas.getContext("2d");
+
+        cx.lineWidth=1.5;
+        cx.strokeStyle="black";
+        cx.fillStyle="red";
+
+        let trapezoid=(x=window.innerWidth/2,y=window.innerHeight/2,length,width)=>{
+                cx.beginPath();
+                cx.lineTo(x,y);
+                cx.lineTo(x+length,y);
+                cx.lineTo(x+length+length/3,y+width)
+                cx.lineTo(x-length/3,y+width);
+                cx.closePath();
+                cx.stroke();
+        }
+
+        let red_diamond=(x=window.innerWidth/2,y=window.innerHeight/2,length)=>{
+            cx.beginPath();
+            cx.moveTo(x,y+length/2);
+            cx.lineTo(x+length/2,y);
+            cx.lineTo(x+length,y+length/2)
+            cx.lineTo(x+length/2,y+length)
+            cx.lineTo(x,y+length/2)
+            cx.fill();
+           
+        }
+
+        let zigzagging_line=(x=window.innerWidth/2,y=window.innerHeight/2,length,depth,howmany)=>{
+            cx.lineWidth=0.5;
+            cx.beginPath();
+            cx.moveTo(x,y);
+            for(let i=0;i<howmany;i++){
+                if(i%2==0){
+                    cx.lineTo(x+length,y+depth);
+                }else{
+                    cx.lineTo(x,y+depth);
+                }
+                y=y+depth;
+            }
+            cx.closePath()
+            cx.stroke();
+        }
+
+        let spiral=(x=window.innerWidth/2,y=window.innerHeight/2,radius)=>{
+            let xCenter=x+radius,yCenter=y+radius;
+            cx.beginPath();
+            cx.moveTo(xCenter,yCenter);
+            for(let i=0;i<=300;i++){
+                let angle=i*Math.PI/30;
+                let dist=radius*i/300;
+                cx.lineTo(xCenter+Math.cos(angle)*dist,yCenter+Math.sin(angle)*dist)
+            }
+            cx.stroke();
+        }
+
+        let yellowStar=(x=window.innerWidth/2,y=window.innerHeight/2,radius)=>{
+            let xCenter=x+radius,yCenter=y+radius;
+            cx.moveTo(xCenter + radius, yCenter);
+            for (let i = 1; i <= 8; i++) {
+            let angle = i * Math.PI / 4;
+            console.log(xCenter + Math.cos(angle) * radius,
+                          yCenter + Math.sin(angle) * radius)
+            cx.quadraticCurveTo(xCenter, yCenter,
+                          xCenter + Math.cos(angle) * radius,
+                          yCenter + Math.sin(angle) * radius);
+            }
+            cx.fillStyle = "gold";
+            cx.fill();
+        }
+       
+
+
+
+
+    </script>
+
+</body>
+</html>

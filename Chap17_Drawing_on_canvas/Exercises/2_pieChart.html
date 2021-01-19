@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PieChart</title>
+    <style>
+        body{
+            margin: unset;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="shapes">
+
+    </canvas>
+    
+    <script>
+        let canvas=document.querySelector('#shapes');
+        canvas.height=window.innerHeight;
+        canvas.width=window.innerWidth;
+        let context=canvas.getContext("2d");
+
+        context.lineWidth=1.5;
+        context.strokeStyle="black";
+        context.fillStyle="red";
+        function pieChart(data,cx,cy,r){
+    let total=data.reduce((sum,{count})=>sum+count,0)
+    let currentAngle=-0.5*Math.PI;
+    for(let result of data){
+        let sliceAngle=(result.count / total) * 2 * Math.PI;
+        
+
+        context.beginPath();
+        context.arc(cx,cy,r,currentAngle,currentAngle+sliceAngle);
+        
+        context.lineTo(cx,cy);
+        context.fillStyle=result.color;
+        context.fill();
+        context.closePath();
+        let middleAngle = currentAngle + 0.5 * sliceAngle;
+        let tx=Math.cos(middleAngle)*r+10+cx
+        let ty=Math.sin(middleAngle)*r+10+cy
+        console.log(result.name,tx,ty)
+        if (Math.cos(middleAngle) > 0) {
+        context.textAlign = "left";
+        } else {
+        context.textAlign = "right";
+        }
+        context.fillStyle = "black";
+        context.font="14px Montserrat";
+        context.fillText(result.name,tx,ty);
+        currentAngle+=sliceAngle;
+    }
+    
+}
+const results=[
+    {name: "Satisfied", count: 104, color: "lightblue"},
+    {name: "Neutral", count: 56, color: "lightgreen"},
+    {name: "Unsatisfied", count: 50, color: "pink"},
+    {name: "No comment", count: 75, color: "silver"}
+]
+pieChart(results,400,300,200);
+
+
+
+
+
+
+    </script>
+</body>
+</html>
