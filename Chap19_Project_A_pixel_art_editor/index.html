@@ -5,7 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>A pixel art editor</title>
     <style>
+        *{
+    user-select: none;
+    touch-action: manipulation;
+  }
       body {
+      /* overflow-x: hidden; */
         background-color: black;
         color: white;
       }
@@ -124,24 +129,27 @@
           };
       }
 
-      PictureCanvas.prototype.touch=function(startEvent,onDown){
-          let pos=pointerPosition(startEvent.touch[0],this.dom);
-          let onMove=onDown(pos);
-          startEvent.preventDefault();
-          if(!onMove) return;
-          let move=moveEvent=>{
-            let newPos=pointerPosition(moveEvent.touches[0],this.dom);
-            if(newPos.x==pos.x && newPos.y==pos.y) return;
-            pos=newPos;
-            onMove(newPos);
-          }
-          let end=()=>{
-              this.dom.removeEventListener("touchmove",move);
-              this.don.removeEventListener("touchend",end);
-          }
-          this.dom.addEventListener("touchmove",move);
-          this.dom.addEventListener("touchend",end);
-      }
+      PictureCanvas.prototype.touch = function(startEvent,
+onDown) {
+let pos = pointerPosition(startEvent.touches[0], this.dom);
+let onMove = onDown(pos);
+startEvent.preventDefault();
+if (!onMove) return;
+let move = moveEvent => {
+let newPos = pointerPosition(moveEvent.touches[0],
+this.dom);
+if (newPos.x == pos.x && newPos.y == pos.y) return;
+pos = newPos;
+onMove(newPos);
+};
+let end = () => {
+
+this.dom.removeEventListener("touchmove", move);
+this.dom.removeEventListener("touchend", end);
+};
+this.dom.addEventListener("touchmove", move);
+this.dom.addEventListener("touchend", end);
+};
 
       class PixelEditor{
           constructor(state,config){
@@ -442,7 +450,7 @@
       const startState={
         tool:"draw",
         color:"#000000",
-        picture:Picture.empty(100,70,"#f0f0f0"),
+        picture:Picture.empty(Math.floor(window.innerWidth/scale),Math.floor(window.innerHeight/(scale+1)),"#f0f0f0"),
         done:[],
         doneAt:0
       }
