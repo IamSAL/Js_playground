@@ -1,0 +1,7 @@
+.success {
+    background-color: #48bd37;
+    color: #FFF;
+}
+.upload-error{
+    display: none;
+}

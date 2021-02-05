@@ -1,0 +1,192 @@
+{
+  "id": "2b3ec2e3-d3ff-452e-8659-5e4c836ec6ab",
+  "name": "Set appointment",
+  "auto": true,
+  "condition": "",
+  "conditionalFollowupEvents": [],
+  "conditionalResponses": [],
+  "context": [],
+  "contexts": [],
+  "endInteraction": false,
+  "events": [],
+  "fallbackIntent": false,
+  "liveAgentHandoff": false,
+  "parentId": null,
+  "followUpIntents": [],
+  "priority": 500000,
+  "responses": [
+    {
+      "action": "",
+      "affectedContexts": [],
+      "parameters": [
+        {
+          "noInputPromptMessages": [],
+          "noMatchPromptMessages": [],
+          "promptMessages": [],
+          "defaultValue": "",
+          "name": "time",
+          "dataType": "@sys.time",
+          "isList": false,
+          "required": true,
+          "prompts": [
+            "What time would you like to come in?",
+            "when is the best time for you?"
+          ],
+          "value": "$time",
+          "outputDialogContexts": []
+        },
+        {
+          "noInputPromptMessages": [],
+          "noMatchPromptMessages": [],
+          "promptMessages": [],
+          "defaultValue": "",
+          "name": "date",
+          "dataType": "@sys.date",
+          "isList": false,
+          "required": true,
+          "prompts": [
+            "What date is best for you?",
+            "what date you want the appointment for?",
+            "Please also give us a date!"
+          ],
+          "value": "$date",
+          "outputDialogContexts": []
+        }
+      ],
+      "defaultResponsePlatforms": {},
+      "messages": [
+        {
+          "type": "message",
+          "condition": "",
+          "speech": [
+            "Done! Your appointment is set at $time , $date.",
+            "Appointment scheduled, see at $date!"
+          ]
+        }
+      ],
+      "resetContexts": false
+    }
+  ],
+  "rootParentId": null,
+  "templates": [],
+  "userSays": [
+    {
+      "isTemplate": false,
+      "data": [
+        {
+          "text": "set an appointment at ",
+          "userDefined": false
+        },
+        {
+          "text": "Thursday",
+          "userDefined": true,
+          "meta": "@sys.ignore",
+          "alias": null
+        },
+        {
+          "text": " ",
+          "userDefined": false
+        },
+        {
+          "text": "noon",
+          "userDefined": true,
+          "alias": "time",
+          "meta": "@sys.time"
+        }
+      ],
+      "count": 0,
+      "id": "be67bb98-425d-4cc2-a556-1c2bf89db2c8",
+      "updated": null
+    },
+    {
+      "isTemplate": false,
+      "data": [
+        {
+          "text": "I need to visit ",
+          "userDefined": false
+        },
+        {
+          "text": "tomorrow",
+          "userDefined": false,
+          "meta": "@sys.ignore",
+          "alias": null
+        },
+        {
+          "text": " at ",
+          "userDefined": false
+        },
+        {
+          "text": "10am",
+          "userDefined": true,
+          "alias": "time",
+          "meta": "@sys.time"
+        }
+      ],
+      "count": 0,
+      "id": "43c356aa-b758-47d9-b70d-a659ab04cdad",
+      "updated": null
+    },
+    {
+      "isTemplate": false,
+      "data": [
+        {
+          "text": "I need a checkup",
+          "userDefined": false
+        }
+      ],
+      "count": 0,
+      "id": "5fbbeab9-e567-46a1-baf3-e47a85ca8eab",
+      "updated": null
+    },
+    {
+      "isTemplate": false,
+      "data": [
+        {
+          "text": "I want to visit your chamber",
+          "userDefined": false
+        }
+      ],
+      "count": 0,
+      "id": "32ad76ad-9073-4d9a-94b7-6796e7ced892",
+      "updated": null
+    },
+    {
+      "isTemplate": false,
+      "data": [
+        {
+          "text": "I want to get an appointment",
+          "userDefined": false
+        }
+      ],
+      "count": 0,
+      "id": "9e00fbc5-0692-45b6-8162-98ed70f449df",
+      "updated": null
+    },
+    {
+      "isTemplate": false,
+      "data": [
+        {
+          "text": "Schedule a visit",
+          "userDefined": false
+        }
+      ],
+      "count": 0,
+      "id": "075b36a3-ea0f-4dde-9f78-5b7b459ca15e",
+      "updated": null
+    },
+    {
+      "isTemplate": false,
+      "data": [
+        {
+          "text": "Set an appointment",
+          "userDefined": false
+        }
+      ],
+      "count": 0,
+      "id": "1103344c-b4b9-4736-ba15-bf0a472dec77",
+      "updated": null
+    }
+  ],
+  "webhookForSlotFilling": false,
+  "webhookUsed": false
+}

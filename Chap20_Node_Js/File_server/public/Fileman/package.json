@@ -1,0 +1,41 @@
+{
+  "name": "filemanager-template-vanilla",
+  "version": "1.0.0",
+  "description": "A simple filemanager template written in HTML5, vanilla javascript, and sass without any dependencies and frameworks",
+  "scripts": {
+    "css-compile": "node-sass src/scss/style.scss dist/filemanager-template.css",
+    "css-prefix": "postcss dist/filemanager-template.css --replace --config postcss.config.js",
+    "css-build-prefix": "postcss dist/filemanager-template.min.css --replace --config postcss.config.js",
+    "css-watch": "npm run css-compile -- -w",
+    "css-build": "node-sass src/scss/style.scss dist/filemanager-template.min.css --output-style compressed",
+    "js-compile": "rollup src/js/main.js --file dist/filemanager-template.js --format iife",
+    "js-bundle": "rollup -c",
+    "js-watch": "npm run js-compile -- -w",
+    "dev": "npm run css-compile && npm run js-compile && npm run css-prefix",
+    "build": "npm run css-build && npm run js-bundle && npm run css-build-prefix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ELAMRANI744/filemanager-template.git"
+  },
+  "keywords": [
+    "filemanager",
+    "template",
+    "html5",
+    "sass",
+    "vanilla-javascript"
+  ],
+  "author": "El Amrani Chakir",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ELAMRANI744/filemanager-template/issues"
+  },
+  "homepage": "https://github.com/ELAMRANI744/filemanager-template#readme",
+  "devDependencies": {
+    "rollup": "^2.18.2",
+    "rollup-plugin-uglify": "^6.0.4",
+    "autoprefixer": "^9.8.4",
+    "node-sass": "^4.14.1",
+    "postcss": "^7.0.32"
+  }
+}

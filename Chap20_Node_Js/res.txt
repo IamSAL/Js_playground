@@ -1,0 +1,3 @@
+Device, FIFO and socket files are ignored.
+
+Files to which the user does not have permissions are included in the directory tree, however, directories to which the user does not have permissions, along with all of its contained files, are completely ignored.
