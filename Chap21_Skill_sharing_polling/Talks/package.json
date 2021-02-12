@@ -1,0 +1,14 @@
+{
+  "name": "talks",
+  "version": "1.0.0",
+  "description": "EQjs book project, Discussing about talks",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mjinh Sal",
+  "license": "ISC",
+  "dependencies": {
+    "ecstatic": "^4.1.4"
+  }
+}
