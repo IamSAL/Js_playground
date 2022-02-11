@@ -35,7 +35,7 @@
     "rollup": "^2.18.2",
     "rollup-plugin-uglify": "^6.0.4",
     "autoprefixer": "^9.8.4",
-    "node-sass": "^4.14.1",
+    "node-sass": "^7.0.0",
     "postcss": "^7.0.32"
   }
 }
